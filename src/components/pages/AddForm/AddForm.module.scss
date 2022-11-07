@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    background-color: #f7f7f7;
+    height: 700px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3% 0;
+    
+    @media (max-height: 900px) { 
+        height: 550px;
+    }
+}

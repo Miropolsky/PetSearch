@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 6% 0 0 10% ;
+    justify-content: center;
+
+    .text{
+        margin-top: 6%;
+        width: 500px;
+        line-height: 18px;
+        font-weight: 500;
+    }
+
+    .photos{
+        margin-top: 6%;
+        div {
+            margin-top: 2%;
+        }
+    }
+
+    .description{
+        margin-top: 2%;
+    }
+
+    .next{
+        margin-top: 5%;
+    }
+}

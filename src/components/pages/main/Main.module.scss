@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    background-color: #f7f7f7;
+    height: 700px;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 3%;
+}
+
+.text {
+    font-weight: bold;
+    font-size: 32px;
+    margin-top: 3%;
+}
+
+.buttons {
+    margin-top: 3%;
+    display: flex;
+    width: 27%;
+    justify-content: space-between;
+}
+
+@media (max-height: 900px) { 
+    .container {
+        height: 550px;
+    }
+ }
+

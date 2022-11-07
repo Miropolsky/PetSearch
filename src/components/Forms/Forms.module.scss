@@ -1,0 +1,25 @@
+.container{
+    width: 735px;
+    height: 564px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5%;
+
+    @media (max-height: 900px) { 
+        width: 650px;
+        height: 500px;
+    }
+
+    .title{
+        font-weight: bold;
+        margin-left: 10%;
+        margin-top: 10%;
+        font-size: 20px;
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+    }
+}

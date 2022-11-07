@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .text{
+        margin-top: 20%;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .buttons{
+        margin-top: 8%;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .buttons > div{
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    .buttons > a:nth-child(2){
+        margin-left: 5%;
+    }
+
+    img{
+        margin-top: 21%;
+    }
+
+    
+}

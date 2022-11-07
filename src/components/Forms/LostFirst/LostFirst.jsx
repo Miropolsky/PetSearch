@@ -1,0 +1,46 @@
+import RadioButton from '../../UI/RadioButton/RadioButton'
+import Button from '../../UI/Button/Button'
+import styles from './LostFirst.module.scss'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react';
+// import { useState } from 'react'
+import { ContextLost } from '../../pages/Lost/Context'
+
+export default function LostFirst() {
+    // const [firstLost, setFirstLost] = useState({
+    //     animal: 'cat',
+    //     gender: 'female'
+    // });
+    // console.log(formLost)
+
+    const {formLost, formUpdate} = useContext(ContextLost)
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.textTitle}>
+                <p>1/5: Укажите вид и пол пропавшего питомца</p>
+            </div>
+            <div className={styles.text}>
+                <p>Вид питомца (Указать породу можно будет далее)</p>
+            </div>
+            <div className={styles.buttons}>
+                <RadioButton text='Собака' name='animal' value='dog' width={150} height={34} formUpdate={formUpdate} formLost={formLost}/>
+                {/* form={formUpdate} */}
+                <RadioButton text='Кошка' name='animal' value='cat' checked width={150} height={34} formUpdate={formUpdate} formLost={formLost}/>
+            </div>
+            <div className={styles.text}>
+                <p>Пол питомца</p>
+            </div>
+            <div className={styles.buttons}>
+                <RadioButton text='Мальчик' name='gender' value='male' width={150} height={34} formUpdate={formUpdate} formLost={formLost}/>
+                <RadioButton text='Девочка' name='gender' value='female' checked width={150} height={34} formUpdate={formUpdate} formLost={formLost}/>
+            </div>
+            <div className={styles.next}>
+                {/* <button onClick={() => formUpdate({animal: 'god', gender: 'ssss'})}>КЛИК</button> */}
+                <Link to='/lost/lostSecond'><Button text='Далее' width={150} height={34}/></Link>
+            </div>
+            
+
+        </div>
+    )
+}

@@ -1,0 +1,19 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    width: 777px;
+    height: 285px;
+}
+
+.text {
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 5%;
+}

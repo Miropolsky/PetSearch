@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 6% 0 0 10% ;
+    justify-content: center;
+
+    .text{
+        margin-top: 6%;
+    }
+
+    .buttons{
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 2%;
+    }
+
+    .buttons > div:nth-child(2){
+        margin-left: 5%;
+    }
+
+    .next{
+        margin-top: 8%;
+    }
+}

@@ -1,0 +1,82 @@
+.container{
+    display: flex;
+    height: 700px;
+
+    .adsBlock{
+        overflow-y: scroll;
+        flex-basis: 500px;
+        background-color: #f2f2f2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .founder {
+            margin-top: 5%;
+            font-weight: 500;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        .search {
+            margin-top: 3%;
+        }
+
+        .ads {
+            margin-top: 3%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            .ad{
+                width: 380px;
+                height: 172px;
+                border-radius: 15px;
+                display: flex;
+                align-items: center;
+                background-color: white;
+                justify-content: center;
+                padding-left: 3%;
+
+                .textBlock {
+                    margin-left: 5%;
+                    flex-direction: column;
+
+                    .text{
+                        line-height: 1.2;
+                    }
+
+                    .features{
+                        margin-top: 5%;
+                    }
+
+                    .adres{
+                        margin-top: 5%;
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 14px;
+                        color: #848484;
+                    }
+
+                    .adresImg{
+                        display: flex;
+
+                        p{
+                            margin-left: 2%;
+                        }
+                    }
+
+                    .date{
+                        margin-top: 2%;
+                        margin-left: 8%
+                    }
+
+                }
+            }
+
+            .ad:not(:first-child){
+                margin-top: 3%;
+            }
+        }
+    }
+
+    
+}

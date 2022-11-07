@@ -1,0 +1,33 @@
+.form_radio_btn {
+    height: 34px;
+    width: 148px;
+    margin: 2.1px; 
+    display: inline-block;
+}
+.form_radio_btn input[type=radio] {
+	display: none;
+}
+
+.form_radio_btn label {
+    box-sizing: border-box;
+    width: 148px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	cursor: pointer;
+	line-height: 34px;
+	border: 2px solid black;
+    border-radius: 12px;
+    font-weight: 500;
+}
+ 
+/* Checked */
+.form_radio_btn input[type=radio]:checked + label {
+	border: 2px solid #2046FA;
+}
+ 
+/* Hover */
+.form_radio_btn label:hover {
+	border: 2px solid #518afc;
+}
+ 

@@ -1,0 +1,106 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 6% 0 0 10% ;
+    justify-content: center;
+
+    .text{
+        margin-top: 6%;
+        width: 500px;
+        line-height: 18px;
+        font-weight: 500;
+    }
+
+    .photos{
+        margin-top: 6%;
+        div {
+            margin-top: 2%;
+        }
+    }
+
+    .next{
+        margin-top: 20%;
+    }
+}
+
+.input_file_row {
+	display: inline-block;
+    
+}
+.input_file {
+	position: relative;
+	display: flex;
+    border: 1.7px solid black;
+    border-radius: 12px;
+    width: 193px;
+    height: 34px;
+	cursor: pointer;
+	justify-content: center;
+    align-items: center;
+    
+}
+.input_file span {
+	position: relative;
+	outline: none;
+	font-size: 15px;
+	color: black;
+    border-radius: 12px;
+    font-weight: 500;
+	text-align: center;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+	transition: background-color 0.2s;
+}
+.input_file input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+ 
+/* Hover/active */
+.input_file:hover{
+	background-color: #34a8fa9a;
+}
+
+ 
+// /* Список c превью */
+// .input_file_list {
+// 	padding: 10px 0;
+// }
+// .input_file_list_item {
+// 	display: inline-block;
+// 	margin: 0 15px 15px;
+// 	width: 150px;
+// 	vertical-align: top;
+// 	position: relative;
+// }
+// .input_file_list_item img {
+// 	width: 150px;
+// }
+// .input_file_list_name {
+// 	text-align: center;
+// 	display: block;
+// 	font-size: 12px;
+// 	text-overflow: ellipsis;
+// 	overflow: hidden;
+// }
+// .input_file_list_remove {
+// 	color: #fff;
+// 	text-decoration: none;
+// 	display: inline-block;
+// 	position: absolute;
+// 	padding: 0;
+// 	margin: 0;
+// 	top: 5px;
+// 	right: 5px;
+// 	background: #ff0202;
+// 	width: 16px;
+// 	height: 16px;
+// 	text-align: center;
+// 	line-height: 16px;
+// 	border-radius: 50%;
+// }
