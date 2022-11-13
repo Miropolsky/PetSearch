@@ -21,11 +21,13 @@ export default function FoundThird() {
             </div>
             <div className={styles.text}>
                 <p>Дата поимки</p>
-                <input type='date' name='date' onChange={change}/>
+                <div>
+                    <input type='date' name='date' onChange={change}/>
+                </div>
             </div>
-            <div className={styles.text}>
+            <div className={styles.textAdres}>
                 <p>Место поимки</p>
-                <input type='search' name='adres' onChange={change}/>
+                <input placeholder='Екатеринубрг, ул. Ленина, д. 29' type='search' name='adres' onChange={change}/>
             </div>
             <div className={styles.next}>
                 <Link to='/found/foundFourth'><Button text='Далее' width={150} height={34}/></Link>

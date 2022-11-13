@@ -10,7 +10,7 @@ export default function Main() {
             <div className={styles.text}>Что случилось?</div>
             <div className={styles.buttons}>
                 <Link to='lost/lostFirst'><Button text='Я потерял питомца'></Button></Link>
-                <Button text='Я нашёл питомца' white={true}></Button>
+                <Link to='found/foundFirst'><Button text='Я нашёл питомца' white={true}></Button></Link>
             </div>
         </div>
     )

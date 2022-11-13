@@ -25,4 +25,22 @@
     .next{
         margin-top: 5%;
     }
+
+    textarea {
+        border-radius: 12px;
+        margin-top: 2%;
+        border: 0px solid white;
+        background-color: #E4E4E4;
+        box-sizing: border-box;
+        height: 28px;
+        width: 84%;
+        height: 100px;
+        padding-left: 2%;
+        padding-top: 5px;
+        color: #848484;
+        font-size: 14px;
+        &::placeholder {
+            color: #A7A7A7;
+        }
+    }
 }

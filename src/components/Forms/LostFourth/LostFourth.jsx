@@ -20,7 +20,7 @@ export default function LostFourth() {
                 <p>Укажите дополнительную информацию, которая может помочь в поиске и возвращении вашего питомца: порода, окрас, пол, особые приметы, повадки так же обстоятельства, при которых питомец был утерян</p>
             </div>
             <div className={styles.description}>
-                <textarea rows='7' cols='65' onChange={change} name='description'></textarea>
+                <textarea placeholder='Опишите вашего питомца' onChange={change} name='description'></textarea>
             </div>
             <div className={styles.next}>
                 <Link to='/lost/lostFifth'><Button text='Далее' width={150} height={34}/></Link>

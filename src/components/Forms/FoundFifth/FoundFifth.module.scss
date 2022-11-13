@@ -21,4 +21,18 @@
     .next{
         margin-top: 5%;
     }
+
+    input[type=name], input[type=tel], input[type=email] {
+        border-radius: 12px;
+        margin-top: 2%;
+        border: 0px solid white;
+        background-color: #E7E7E7;
+        box-sizing: border-box;
+        height: 28px;
+        width: 70%;
+        padding-left: 2%;
+        &::placeholder {
+            color: #A7A7A7;
+        }
+    }
 }

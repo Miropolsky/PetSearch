@@ -1,10 +1,14 @@
 import styles from './Ads.module.scss'
-import map from '../../../img/map.svg'
+// import map from '../../../img/map.svg'
 import SearchBar from '../../UI/SearchBar/SearchBar'
 import cat from '../../../img/cat.svg'
 import metka from '../../../img/metka.svg'
+import Map from '../../Map/Map'
+import { useState } from 'react';
 
 export default function Ads() {
+    const [isLoadMap, setIsLoadMap] = useState(false);
+
     return (
         <div className={styles.container}>
             <div className={styles.adsBlock}>
@@ -15,7 +19,7 @@ export default function Ads() {
                     <SearchBar width={380} height={34}/>
                 </div>
                 <div className={styles.ads}>
-                    {[1,2,3,4,5].map((el) => {return <div className={styles.ad}>
+                    {[1,2,3,4,5].map((el) => {return <div key={el} className={styles.ad}>
                         <div className={styles.photo}>
                             <img src={cat} alt='cat' />
                         </div>
@@ -44,7 +48,8 @@ export default function Ads() {
                 
             </div>
             <div className={styles.map}>
-                <img src={map} alt='logo' width='1090' height='700px'/>
+                {isLoadMap ? <div>Загрузка</div> : <Map/>}
+                {/* <img src={map} alt='logo' width='1090' height='700px'/> */}
             </div>
         </div>
     )

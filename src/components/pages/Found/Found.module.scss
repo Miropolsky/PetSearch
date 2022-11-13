@@ -37,3 +37,45 @@
         height: 550px;
     }
 }
+
+.headForm{
+    margin-left: 10%;
+    display: flex;
+    justify-content: space-between;
+    .close{
+        color: red;
+        font-size: 14px;
+        padding-top: 25px;
+        padding-right: 25px;
+    }
+
+    .arrow{
+        margin-right: 10%;
+        img{
+            width: 14px;
+            
+        }
+    }
+
+    .back {
+        padding-left: 10%;
+        padding-top: 25px;
+        color: black;
+        display: flex; 
+    }
+}
+
+
+.headFormFirst{
+    margin-left: 85%;
+    display: flex;
+    justify-content: space-between;
+    .close{
+        color: red;
+        font-size: 14px;
+        padding-top: 25px;
+        padding-right: 25px;
+    }
+}
+
+
