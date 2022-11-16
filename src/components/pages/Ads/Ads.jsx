@@ -3,11 +3,9 @@ import styles from './Ads.module.scss'
 import SearchBar from '../../UI/SearchBar/SearchBar'
 import cat from '../../../img/cat.svg'
 import metka from '../../../img/metka.svg'
-import Map from '../../Map/Map'
-import { useState } from 'react';
+import MapYandex from '../../Map/MapYandex'
 
 export default function Ads() {
-    const [isLoadMap, setIsLoadMap] = useState(false);
 
     return (
         <div className={styles.container}>
@@ -48,8 +46,7 @@ export default function Ads() {
                 
             </div>
             <div className={styles.map}>
-                {isLoadMap ? <div>Загрузка</div> : <Map/>}
-                {/* <img src={map} alt='logo' width='1090' height='700px'/> */}
+                <MapYandex/>
             </div>
         </div>
     )
