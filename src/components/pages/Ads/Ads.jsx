@@ -3,7 +3,7 @@ import styles from './Ads.module.scss'
 import SearchBar from '../../UI/SearchBar/SearchBar'
 import cat from '../../../img/cat.svg'
 import metka from '../../../img/metka.svg'
-import MapYandex from '../../Map/MapYandex'
+import MapYandex from '../../MapYandex/MapYandex'
 
 export default function Ads() {
 
