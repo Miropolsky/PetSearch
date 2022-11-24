@@ -14,7 +14,8 @@ export default function Lost() {
         animal: 'cat',
         gender: 'female',
         date: '',
-        adres: '',
+        address: '',
+        coordinate: [],
         description: '',
         name: '',
         tel: '',
@@ -23,13 +24,13 @@ export default function Lost() {
 
     const formUpdate = (form) => {
         setFormLost(form);
-    }
-    const [curUrl, setCurUrl] = useState(window.location.pathname)
+    };
+    const [curUrl, setCurUrl] = useState(window.location.pathname);
     const location = useLocation();
     useEffect(() => {
-        setCurUrl(window.location.pathname)
-    }, [location])
-    
+        setCurUrl(window.location.pathname);
+    }, [location]);
+
     function backUrl(curUrl) {
         switch (curUrl) {
             case '/lost/lostSecond':
@@ -42,15 +43,32 @@ export default function Lost() {
                 return '/lost/lostFourth';
             default:
                 return;
-          }
+        }
     }
     return (
-        <ContextLost.Provider value={{formLost, formUpdate}}>
+        <ContextLost.Provider value={{ formLost, formUpdate }}>
             <div className={styles.container}>
                 <div className={styles.containerIn}>
-                    <div className={curUrl.indexOf('First') === -1 ? styles.headForm : styles.headFormFirst }>
-                        {curUrl.indexOf('First') === -1 && <Link to={backUrl(curUrl)}><div className={styles.back}><span className={styles.arrow}><img src={arrow} alt='стрелка' /></span> Назад</div></Link>}
-                        <Link to='/'><div className={styles.close}>Закрыть</div></Link>
+                    <div
+                        className={
+                            curUrl.indexOf('First') === -1
+                                ? styles.headForm
+                                : styles.headFormFirst
+                        }
+                    >
+                        {curUrl.indexOf('First') === -1 && (
+                            <Link to={backUrl(curUrl)}>
+                                <div className={styles.back}>
+                                    <span className={styles.arrow}>
+                                        <img src={arrow} alt='стрелка' />
+                                    </span>{' '}
+                                    Назад
+                                </div>
+                            </Link>
+                        )}
+                        <Link to='/'>
+                            <div className={styles.close}>Закрыть</div>
+                        </Link>
                     </div>
                     <div className={styles.title}>
                         <p>Объявление о пропаже питомца</p>
@@ -61,5 +79,5 @@ export default function Lost() {
                 </div>
             </div>
         </ContextLost.Provider>
-    )
+    );
 }

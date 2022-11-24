@@ -13,7 +13,6 @@ export default function FoundThird() {
     }
 
     function handleAdres(event) {
-        console.log(event.value);
         formUpdate({
             ...formLost,
             address: event.value,
