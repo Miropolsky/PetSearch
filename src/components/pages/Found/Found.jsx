@@ -11,12 +11,13 @@ import { useEffect } from 'react';
 
 export default function Found() {
     const [formLost, setFormLost] = useState({
-        type: 'found',
+        isLost: false,
         animal: 'cat',
         gender: 'female',
         date: '',
         address: '',
-        coordinate: [],
+        geoLat: '',
+        geoLon: '',
         description: '',
         name: '',
         tel: '',

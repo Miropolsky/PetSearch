@@ -10,12 +10,13 @@ import arrow from '../../../img/icons/arrow.svg';
 
 export default function Lost() {
     const [formLost, setFormLost] = useState({
-        type: 'lost',
+        isLost: true,
         animal: 'cat',
         gender: 'female',
         date: '',
         address: '',
-        coordinate: [],
+        geoLat: '',
+        geoLon: '',
         description: '',
         name: '',
         tel: '',

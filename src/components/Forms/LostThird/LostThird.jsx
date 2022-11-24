@@ -17,7 +17,8 @@ export default function LostThird() {
         formUpdate({
             ...formLost,
             address: event.value,
-            coordinate: [event.data.geo_lat, event.data.geo_lon],
+            geoLat: +event.data.geo_lat,
+            geoLon: +event.data.geo_lon,
         });
     }
 

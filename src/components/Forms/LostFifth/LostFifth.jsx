@@ -35,7 +35,7 @@ export default function LostFifth() {
                 <input type='email' name='email' onChange={change}></input>
             </div>
             <div className={styles.next}>
-                <div onClick={() => console.log(formLost)}>
+                <div onClick={() => console.log(JSON.stringify(formLost))}>
                     <Button
                         text='Разместить объявление'
                         width={170}
