@@ -20,6 +20,12 @@ export default function FoundFifth() {
     //     setEmail(event.value);
     //     console.log(event.value);
     // }
+    function postForm() {
+        axios
+            .post('http://localhost:8080/api/v1/poster', formLost)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err.response.data));
+    }
 
     return (
         <div className={styles.container}>
@@ -51,7 +57,7 @@ export default function FoundFifth() {
                 <input type='email' name='email' onChange={change}></input>
             </div>
             <div className={styles.next}>
-                <div onClick={() => console.log(formLost)}>
+                <div onClick={postForm}>
                     <Button
                         text='Разместить объявление'
                         width={170}

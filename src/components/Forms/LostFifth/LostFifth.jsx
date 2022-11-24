@@ -3,12 +3,20 @@ import styles from './LostFifth.module.scss';
 // import { Link } from 'react-router-dom'
 import { useContext } from 'react';
 import { ContextLost } from '../../pages/Lost/Context';
+import axios from 'axios';
 
 export default function LostFifth() {
     const { formLost, formUpdate } = useContext(ContextLost);
 
     function change(event) {
         formUpdate({ ...formLost, [event.target.name]: event.target.value });
+    }
+
+    function postForm() {
+        axios
+            .post('http://localhost:8080/api/v1/poster', formLost)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err.response.data));
     }
 
     return (
@@ -35,7 +43,7 @@ export default function LostFifth() {
                 <input type='email' name='email' onChange={change}></input>
             </div>
             <div className={styles.next}>
-                <div onClick={() => console.log(JSON.stringify(formLost))}>
+                <div onClick={postForm}>
                     <Button
                         text='Разместить объявление'
                         width={170}
