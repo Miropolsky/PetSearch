@@ -1,14 +1,24 @@
-import Button from '../../UI/Button/Button'
-import styles from './LostThird.module.scss'
-import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import { ContextLost } from '../../pages/Lost/Context'
+import Button from '../../UI/Button/Button';
+import styles from './LostThird.module.scss';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { ContextLost } from '../../pages/Lost/Context';
+import { AddressSuggestions } from 'react-dadata';
+import 'react-dadata/dist/react-dadata.css';
 
 export default function LostThird() {
-
-    const {formLost, formUpdate} = useContext(ContextLost)
+    const { formLost, formUpdate } = useContext(ContextLost);
     function change(event) {
-        formUpdate({...formLost, [event.target.name]: event.target.value});
+        formUpdate({ ...formLost, [event.target.name]: event.target.value });
+    }
+
+    function handleAdres(event) {
+        console.log(event.value);
+        formUpdate({
+            ...formLost,
+            address: event.value,
+            coordinate: [event.data.geo_lat, event.data.geo_lon],
+        });
     }
 
     return (
@@ -21,15 +31,20 @@ export default function LostThird() {
             </div>
             <div className={styles.text}>
                 <p>Дата потери</p>
-                <input type='date' name='date' onChange={change}/>
+                <input type='date' name='date' onChange={change} />
             </div>
             <div className={styles.text}>
                 <p>Место потери</p>
-                <input type='search' name='adres' onChange={change}/>
+                <AddressSuggestions
+                    token='8be332587e89276d9ca93894f0a6e31914900579'
+                    onChange={handleAdres}
+                />
             </div>
             <div className={styles.next}>
-                <Link to='/lost/lostFourth'><Button text='Далее' width={150} height={34}/></Link>
+                <Link to='/lost/lostFourth'>
+                    <Button text='Далее' width={150} height={34} />
+                </Link>
             </div>
         </div>
-    )
+    );
 }
