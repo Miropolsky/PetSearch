@@ -19,45 +19,53 @@ import FoundSecond from './components/Forms/FoundSecond/FoundSecond';
 import FoundThird from './components/Forms/FoundThird/FoundThird';
 import FoundFourth from './components/Forms/FoundFourth/FoundFourth';
 import FoundFifth from './components/Forms/FoundFifth/FoundFifth';
+import { CostumList } from './components/ListAds';
 // import { useState } from 'react';
 
 function App() {
-
-  return (
-    <div className="App">
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Main />}/>
-          <Route path='*' element={<Main />}/>
-          <Route path='contacts' element={<Contacts />}/>
-          <Route path='support' element={<SupportProject />}/>
-          <Route path='ads' element={<Ads />}/>
-          <Route path='add-adv' element={<AddForm />}>
-            <Route path='' element={<NewAdv />} />
-            <Route path='*' element={<NewAdv />} />
-          </Route>
-          <Route path='lost' element={<Lost />}>
-            <Route path='' element={<LostFirst />} />
-            <Route path='*' element={<LostFirst />} />
-            <Route path='lostFirst' element={<LostFirst />} />
-            <Route path='lostSecond' element={<LostSecond />} />
-            <Route path='lostThird' element={<LostThird />} />
-            <Route path='lostFourth' element={<LostFourth />} />
-            <Route path='lostFifth' element={<LostFifth />} />
-          </Route>
-          <Route path='found' element={<Found />}>
-            <Route path='' element={<FoundFirst />} />
-            <Route path='*' element={<FoundFirst />} />
-            <Route path='foundFirst' element={<FoundFirst />} />
-            <Route path='foundSecond' element={<FoundSecond />} />
-            <Route path='foundThird' element={<FoundThird />} />
-            <Route path='foundFourth' element={<FoundFourth />} />
-            <Route path='foundFifth' element={<FoundFifth />} />
-          </Route>
-        </Route>
-      </Routes>
-    </div>
-  );
+    return (
+        <div className='App'>
+            <CostumList>
+                <Routes>
+                    <Route path='/' element={<Layout />}>
+                        <Route index element={<Main />} />
+                        <Route path='*' element={<Main />} />
+                        <Route path='contacts' element={<Contacts />} />
+                        <Route path='support' element={<SupportProject />} />
+                        <Route path='ads' element={<Ads />} />
+                        <Route path='add-adv' element={<AddForm />}>
+                            <Route path='' element={<NewAdv />} />
+                            <Route path='*' element={<NewAdv />} />
+                        </Route>
+                        <Route path='lost' element={<Lost />}>
+                            <Route path='' element={<LostFirst />} />
+                            <Route path='*' element={<LostFirst />} />
+                            <Route path='lostFirst' element={<LostFirst />} />
+                            <Route path='lostSecond' element={<LostSecond />} />
+                            <Route path='lostThird' element={<LostThird />} />
+                            <Route path='lostFourth' element={<LostFourth />} />
+                            <Route path='lostFifth' element={<LostFifth />} />
+                        </Route>
+                        <Route path='found' element={<Found />}>
+                            <Route path='' element={<FoundFirst />} />
+                            <Route path='*' element={<FoundFirst />} />
+                            <Route path='foundFirst' element={<FoundFirst />} />
+                            <Route
+                                path='foundSecond'
+                                element={<FoundSecond />}
+                            />
+                            <Route path='foundThird' element={<FoundThird />} />
+                            <Route
+                                path='foundFourth'
+                                element={<FoundFourth />}
+                            />
+                            <Route path='foundFifth' element={<FoundFifth />} />
+                        </Route>
+                    </Route>
+                </Routes>
+            </CostumList>
+        </div>
+    );
 }
 
 export default App;

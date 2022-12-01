@@ -44,13 +44,22 @@ export default function MapYandex({ ads }) {
                 gridSize: 32,
                 clusterDisableClickZoom: true,
             });
-        objectManager.objects.options.set('preset', 'islands#greenDotIcon');
-        objectManager.clusters.options.set(
-            'preset',
-            'islands#greenClusterIcons'
-        );
+
         myMap.geoObjects.add(objectManager);
         objectManager.add(dataa);
+
+        objectManager.objects.events.add(['click'], onObjectEvent);
+
+        function onObjectEvent(e) {
+            var objectId = e.get('objectId');
+            if (e.get('type') == 'click') {
+                // Метод setObjectOptions позволяет задавать опции объекта "на лету".
+                console.log(e.originalEvent.currentTarget);
+                objectManager.objects.setObjectOptions(objectId, {
+                    preset: 'islands#redDotIcon',
+                });
+            }
+        }
 
         // fetch('http://jsonplaceholder.typicode.com/users', {
         //     method: 'GET',

@@ -7,10 +7,13 @@ import { ContextFound } from '../../pages/Found/ContextFound';
 import 'react-dadata/dist/react-dadata.css';
 import axios from 'axios';
 // import { useState } from 'react';
+import { ListAds } from './../../ListAds';
+import { Link } from 'react-router-dom';
 
 export default function FoundFifth() {
     const { formLost, formUpdate } = useContext(ContextFound);
     // const [email, setEmail] = useState();
+    const { add } = useContext(ListAds);
 
     function change(event) {
         formUpdate({ ...formLost, [event.target.name]: event.target.value });
@@ -21,12 +24,13 @@ export default function FoundFifth() {
     //     setEmail(event.value);
     //     console.log(event.value);
     // }
-    function postForm() {
-        axios
-            .post('http://localhost:8080/api/v1/poster', formLost)
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err.response.data));
-    }
+
+    // function postForm() {
+    //     axios
+    //         .post('http://localhost:8080/api/v1/poster', formLost)
+    //         .then((res) => console.log(res))
+    //         .catch((err) => console.log(err.response.data));
+    // }
 
     return (
         <div className={styles.container}>
@@ -58,13 +62,15 @@ export default function FoundFifth() {
                 <input type='email' name='email' onChange={change}></input>
             </div>
             <div className={styles.next}>
-                <div onClick={postForm}>
-                    <Button
-                        text='Разместить объявление'
-                        width={170}
-                        height={44}
-                    />
-                </div>
+                <Link to='/ads'>
+                    <div onClick={() => add(formLost)}>
+                        <Button
+                            text='Разместить объявление'
+                            width={170}
+                            height={44}
+                        />
+                    </div>
+                </Link>
             </div>
         </div>
     );

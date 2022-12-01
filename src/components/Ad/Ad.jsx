@@ -12,12 +12,6 @@ export default function Ad({ advertisement }) {
                 <div className={styles.text}>
                     <p>{advertisement.description}</p>
                 </div>
-                <div className={styles.features}>
-                    <p>
-                        <strong>Особенности:</strong> {advertisement.features}
-                    </p>
-                </div>
-
                 <div className={styles.adres}>
                     <div className={styles.adresImg}>
                         <img src={metka} alt='метка' width={15} height={15} />
