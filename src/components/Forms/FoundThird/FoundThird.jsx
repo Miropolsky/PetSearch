@@ -1,15 +1,28 @@
 import Button from '../../UI/Button/Button';
 import styles from './FoundThird.module.scss';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { ContextFound } from '../../pages/Found/ContextFound';
 import { AddressSuggestions } from 'react-dadata';
-import 'react-dadata/dist/react-dadata.css';
+// import 'react-dadata/dist/react-dadata.css';
 
 export default function FoundThird() {
     const { formLost, formUpdate } = useContext(ContextFound);
+    function parseDate(date) {
+        const dat = date.split('-');
+        return new Date(dat[0], dat[1] - 1, dat[2]);
+    }
+    const navigate = useNavigate();
     function change(event) {
-        formUpdate({ ...formLost, [event.target.name]: event.target.value });
+        if (parseDate(event.target.value) < new Date()) {
+            formUpdate({
+                ...formLost,
+                [event.target.name]: event.target.value,
+            });
+        } else {
+            alert('Неверная дата');
+            event.target.value = '';
+        }
     }
 
     function handleAdres(event) {
@@ -19,6 +32,14 @@ export default function FoundThird() {
             geoLat: +event.data.geo_lat,
             geoLon: +event.data.geo_lon,
         });
+    }
+
+    function checkForm() {
+        if (formLost.date === '' || formLost.address === '') {
+            alert('Заполните поля');
+        } else {
+            navigate('/found/foundFourth');
+        }
     }
 
     return (
@@ -37,15 +58,21 @@ export default function FoundThird() {
             </div>
             <div className={styles.textAdres}>
                 <p>Место поимки</p>
-                <AddressSuggestions
-                    token='8be332587e89276d9ca93894f0a6e31914900579'
-                    onChange={handleAdres}
-                />
+                <div style={{ width: 400 }}>
+                    <AddressSuggestions
+                        // containerClassName={styles.inputAdres}
+                        token='8be332587e89276d9ca93894f0a6e31914900579'
+                        onChange={handleAdres}
+                    />
+                </div>
             </div>
             <div className={styles.next}>
-                <Link to='/found/foundFourth'>
+                {/* <Link to='/found/foundFourth'> */}
+                <div style={{ width: 150, height: 34 }} onClick={checkForm}>
                     <Button text='Далее' width={150} height={34} />
-                </Link>
+                </div>
+
+                {/* </Link> */}
             </div>
         </div>
     );

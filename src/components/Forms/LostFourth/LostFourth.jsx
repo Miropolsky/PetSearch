@@ -1,15 +1,24 @@
-import Button from '../../UI/Button/Button'
-import styles from './LostFourth.module.scss'
-import { Link } from 'react-router-dom'
-import { useContext } from 'react'
-import { ContextLost } from '../../pages/Lost/Context'
-
+import Button from '../../UI/Button/Button';
+import styles from './LostFourth.module.scss';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { ContextLost } from '../../pages/Lost/Context';
 
 export default function LostFourth() {
-    const {formLost, formUpdate} = useContext(ContextLost);
+    const { formLost, formUpdate } = useContext(ContextLost);
+
+    const navigate = useNavigate();
 
     function change(event) {
-        formUpdate({...formLost, [event.target.name]: event.target.value});
+        formUpdate({ ...formLost, [event.target.name]: event.target.value });
+    }
+
+    function checkForm() {
+        if (formLost.description === '') {
+            alert('Заполните описание');
+        } else {
+            navigate('/found/foundFifth');
+        }
     }
     return (
         <div className={styles.container}>
@@ -17,14 +26,32 @@ export default function LostFourth() {
                 <p>4/5: Описание</p>
             </div>
             <div className={styles.text}>
-                <p>Укажите дополнительную информацию, которая может помочь в поиске и возвращении вашего питомца: порода, окрас, пол, особые приметы, повадки так же обстоятельства, при которых питомец был утерян</p>
+                <p>
+                    Укажите дополнительную информацию, которая может помочь в
+                    поиске и возвращении вашего питомца: порода, окрас, пол,
+                    особые приметы, повадки так же обстоятельства, при которых
+                    питомец был утерян
+                </p>
+            </div>
+            <div className={styles.text}>
+                <p>
+                    Вкупе с фотографиями, эта информация может существенно
+                    ускорить поиск владельца
+                </p>
             </div>
             <div className={styles.description}>
-                <textarea placeholder='Опишите вашего питомца' onChange={change} name='description'></textarea>
+                <textarea
+                    rows='7'
+                    cols='65'
+                    onChange={change}
+                    name='description'
+                ></textarea>
             </div>
             <div className={styles.next}>
-                <Link to='/lost/lostFifth'><Button text='Далее' width={150} height={34}/></Link>
+                <div style={{ width: 150, height: 34 }} onClick={checkForm}>
+                    <Button text='Далее' width={150} height={34} />
+                </div>
             </div>
         </div>
-    )
+    );
 }

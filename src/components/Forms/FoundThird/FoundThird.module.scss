@@ -5,7 +5,7 @@
     justify-content: center;
 
     .text{
-        margin-top: 6%;
+        margin-top: 5%;
         width: 500px;
         line-height: 18px;
         font-weight: 500;
@@ -16,6 +16,9 @@
         width: 500px;
         line-height: 18px;
         font-weight: 500;
+        div{
+            margin-top: 1%;
+        }
     }
 
     .photos{
@@ -29,18 +32,14 @@
         margin-top: 7%;
     }
 
-    input[type=search] {
+    .inputAdres {
         border-radius: 12px;
         margin-top: 2%;
         border: 0px solid white;
         background-color: #E7E7E7;
         box-sizing: border-box;
         height: 28px;
-        width: 70%;
-        padding-left: 2%;
-        &::placeholder {
-            color: #A7A7A7;
-        }
+        width: 80%;
     }
 
     input[type=date]{

@@ -13,14 +13,14 @@
 
     .photos{
         margin-top: 6%;
-        div {
+        .input_file_row {
             margin-top: 2%;
         }
     }
 
-    .next{
-        margin-top: 0%;
-    }
+	.next{
+		margin-top: 0.8%;
+	}
 }
 
 .input_file_row {
@@ -69,7 +69,8 @@
  
 // /* Список c превью */
 .input_file_list {
-	padding: 10px 0;
+	display: flex;
+	align-items: center;
     height: 90px;
 }
 .input_file_list_item {
@@ -96,7 +97,7 @@
 	position: absolute;
 	padding: 0;
 	margin: 0;
-	top: 2px;
+	top: 5px;
 	right: 12px;
 	background: red;
 	width: 14px;

@@ -52,7 +52,7 @@ export default function MapYandex({ ads }) {
 
         function onObjectEvent(e) {
             var objectId = e.get('objectId');
-            if (e.get('type') == 'click') {
+            if (e.get('type') === 'click') {
                 // Метод setObjectOptions позволяет задавать опции объекта "на лету".
                 console.log(e.originalEvent.currentTarget);
                 objectManager.objects.setObjectOptions(objectId, {
