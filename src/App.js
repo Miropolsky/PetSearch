@@ -31,6 +31,7 @@ function App() {
                         <Route index element={<Main />} />
                         <Route path='*' element={<Main />} />
                         <Route path='contacts' element={<Contacts />} />
+
                         <Route path='support' element={<SupportProject />} />
                         <Route path='ads' element={<Ads />} />
                         <Route path='add-adv' element={<AddForm />}>
