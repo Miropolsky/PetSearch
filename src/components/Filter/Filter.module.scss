@@ -1,0 +1,54 @@
+.container {
+    width: 480px;
+    height: 304px;
+    background-color: white;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1000;
+    left: 31%;
+    top: 22%;
+
+    .line{
+        margin-left: 9%;
+
+        .close{
+            margin-top: 3%;
+            color: red;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 82%;
+        }
+
+        .nameLine{
+            font-size: 16px;
+        }
+
+        .buttons{
+            margin-top: 2%;
+            display: flex;
+            gap: 10px;
+        }
+        .cancel{
+            color: red;
+            font-size: 16px;
+            margin-left: 8%;
+            height: 34px;
+            vertical-align: middle;
+            line-height: 34px;
+            cursor: pointer;
+        }
+    }
+    .line:nth-child(2){
+        margin-top: 1%;
+    }
+
+    .line:nth-child(3){
+        margin-top: 1%;
+    }
+    .line:nth-child(4){
+        margin-top: 1%;
+    }
+    .line:nth-child(5){
+        margin-top: 6%;
+    }
+}

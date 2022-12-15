@@ -1,4 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+// import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
+// import MarkerClusterGroup from 'react-leaflet-markercluster';
+// import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
 import styles from './OpenMap.module.scss';
 
 export default function OpenMap({ list }) {
@@ -16,11 +19,12 @@ export default function OpenMap({ list }) {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             />
+            {/* <MarkerClusterGroup> */}
             <div className={styles.popup}>
                 {list.map((ad) => {
                     return (
                         <Marker key={ad.id} position={[ad.geoLat, ad.geoLon]}>
-                            <Popup>
+                            <Popup key={ad.id}>
                                 <div>
                                     <div>Описание: {ad.description}</div>
                                     <div>Адрес: {ad.address}</div>
@@ -31,6 +35,7 @@ export default function OpenMap({ list }) {
                     );
                 })}
             </div>
+            {/* </MarkerClusterGroup> */}
         </MapContainer>
     );
 }

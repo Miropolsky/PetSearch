@@ -7,7 +7,7 @@ export default function Button({ text, white = false, width, height }) {
                 className={white ? styles.btnWhite : styles.btn}
                 style={{ width: width, height: height }}
             >
-                {text}
+                <p>{text}</p>
             </button>
         </div>
     );

@@ -38,7 +38,7 @@ export const CostumList = (props) => {
         },
         {
             id: 2,
-            isLost: true,
+            isLost: false,
             animal: 'cat',
             features: 'Рыжий',
             gender: 'male',

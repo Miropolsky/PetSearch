@@ -8,16 +8,44 @@ import Ad from '../../Ad/Ad';
 import { useContext, useState } from 'react';
 import { ListAds } from '../../ListAds';
 import OpenMap from '../../OpenMap/OpenMap';
+import Filter from '../../Filter/Filter';
 
 export default function Ads() {
     const { list } = useContext(ListAds);
     const [listAdd, setListAdd] = useState(list);
-    const filterAnimal = () => {
-        setListAdd(list.filter((ad) => ad.animal === 'dog'));
-    };
-    const filterAnimal2 = () => {
-        setListAdd(list.filter((ad) => ad.animal === 'cat'));
-    };
+    const [isFilter, setIsFilter] = useState(true);
+    const [filter, setFilter] = useState({
+        animal: '',
+        gender: '',
+        isLost: '',
+    });
+
+    function handleFilter(e) {
+        e.currentTarget.querySelector('input').checked = true;
+        const eventInput = e.currentTarget.querySelector('input');
+        setFilter({ ...filter, [eventInput.name]: eventInput.value });
+    }
+
+    function filterAds() {
+        let newList = list;
+        if (filter.animal !== '') {
+            newList = newList.filter((ad) => ad.animal === filter.animal);
+        }
+        if (filter.gender !== '') {
+            newList = newList.filter((ad) => ad.gender === filter.gender);
+        }
+        if (filter.isLost !== '') {
+            newList = newList.filter((ad) => ad.isLost === !!+filter.isLost);
+        }
+        setListAdd(newList);
+    }
+
+    function resetFilterAds() {
+        setListAdd(list);
+        let inputs = document.querySelectorAll('input');
+        inputs.forEach((el) => (el.checked = false));
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.adsBlock}>
@@ -26,8 +54,6 @@ export default function Ads() {
                 </div>
                 <div className={styles.search}>
                     <SearchBar width={380} height={34} />
-                    <button onClick={filterAnimal}>клик только собаки</button>
-                    <button onClick={filterAnimal2}>клик только собаки</button>
                 </div>
                 <div className={styles.ads}>
                     {listAdd.map((el, index) => {
@@ -36,6 +62,11 @@ export default function Ads() {
                 </div>
             </div>
             <div className={styles.map}>
+                <Filter
+                    handleFilter={handleFilter}
+                    filterAds={filterAds}
+                    resetFilterAds={resetFilterAds}
+                />
                 {/* <MapYandex ads={list} /> */}
                 <OpenMap list={listAdd} />
             </div>
