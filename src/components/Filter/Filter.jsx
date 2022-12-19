@@ -4,13 +4,16 @@ import styles from './Filter.module.scss';
 
 export default function Filter({
     handleFilter = Function.prototype,
+    filterShow = Function.prototype,
     filterAds,
     resetFilterAds,
 }) {
     return (
         <div className={styles.container}>
             <div className={styles.line}>
-                <div className={styles.close}>Закрыть</div>
+                <div className={styles.close} onClick={filterShow}>
+                    Закрыть
+                </div>
             </div>
             <div className={styles.line}>
                 <div className={styles.nameLine}>Вид</div>

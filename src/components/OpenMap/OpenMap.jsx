@@ -1,13 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-// import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
-// import MarkerClusterGroup from 'react-leaflet-markercluster';
-// import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
 import styles from './OpenMap.module.scss';
 
 export default function OpenMap({ list }) {
-    // const position = [55.702868, 37.530865];
-    console.log(list);
-
     return (
         <MapContainer
             center={[55.702868, 55.530865]}

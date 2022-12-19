@@ -4,16 +4,18 @@ import SearchBar from '../../UI/SearchBar/SearchBar';
 // import cat from '../../../img/cat.svg';
 // import metka from '../../../img/metka.svg';
 // import MapYandex from '../../MapYandex/MapYandex';
+import menu from '../../../img/icons/menu.svg';
 import Ad from '../../Ad/Ad';
 import { useContext, useState } from 'react';
 import { ListAds } from '../../ListAds';
 import OpenMap from '../../OpenMap/OpenMap';
 import Filter from '../../Filter/Filter';
+import { Link } from 'react-router-dom';
 
 export default function Ads() {
     const { list } = useContext(ListAds);
     const [listAdd, setListAdd] = useState(list);
-    const [isFilter, setIsFilter] = useState(true);
+    const [isFilter, setIsFilter] = useState(false);
     const [filter, setFilter] = useState({
         animal: '',
         gender: '',
@@ -46,6 +48,10 @@ export default function Ads() {
         inputs.forEach((el) => (el.checked = false));
     }
 
+    function filterShow() {
+        setIsFilter(!isFilter);
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.adsBlock}>
@@ -54,19 +60,32 @@ export default function Ads() {
                 </div>
                 <div className={styles.search}>
                     <SearchBar width={380} height={34} />
+                    <img
+                        onClick={filterShow}
+                        src={menu}
+                        alt='menu'
+                        height={30}
+                    />
                 </div>
                 <div className={styles.ads}>
                     {listAdd.map((el, index) => {
-                        return <Ad key={index} advertisement={el} />;
+                        return (
+                            <Link key={el.id} to={`${el.id}`}>
+                                <Ad key={el.id} advertisement={el} />
+                            </Link>
+                        );
                     })}
                 </div>
             </div>
             <div className={styles.map}>
-                <Filter
-                    handleFilter={handleFilter}
-                    filterAds={filterAds}
-                    resetFilterAds={resetFilterAds}
-                />
+                {isFilter && (
+                    <Filter
+                        handleFilter={handleFilter}
+                        filterAds={filterAds}
+                        resetFilterAds={resetFilterAds}
+                        filterShow={filterShow}
+                    />
+                )}
                 {/* <MapYandex ads={list} /> */}
                 <OpenMap list={listAdd} />
             </div>

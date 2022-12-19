@@ -1,0 +1,79 @@
+.container{
+    display: flex;
+    justify-content: center;
+    .blocks{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2%;
+        .images{
+            
+            width: 1100px;
+        }
+
+        .title{
+            margin-top: 3%;
+            align-self: flex-start;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .description{
+            margin-top: 3%;
+            font-size: 18px;
+            align-self: flex-start;
+        }
+
+        .line{
+            height: 1px;
+            width: 550px;
+            align-self: flex-start;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            background-color: gray;
+        }
+
+        .lineLight{
+            height: 1px;
+            width: 550px;
+            align-self: flex-start;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            opacity: 40%;
+            background-color: rgb(214, 214, 214);
+        }
+
+        .information{
+            align-self: flex-start;
+            width: 550px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5%;
+            .informLine{
+                width: 550px;
+                height: 30px;
+                font-size: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .informLeft{
+                    color: gray;
+                }
+                
+            }
+        }
+        
+    }
+
+    // div:nth-child(1){
+    //         width: 300px;
+    //     height: 300px;
+    // }
+}
+
+.map {
+    align-self: flex-start;
+    margin-top: 5%;
+    height: 450px;
+    width: 1100px;
+}

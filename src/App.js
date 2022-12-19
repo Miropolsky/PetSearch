@@ -20,6 +20,7 @@ import FoundThird from './components/Forms/FoundThird/FoundThird';
 import FoundFourth from './components/Forms/FoundFourth/FoundFourth';
 import FoundFifth from './components/Forms/FoundFifth/FoundFifth';
 import { CostumList } from './components/ListAds';
+import ProfileAd from './components/pages/ProfileAd/ProfileAd';
 // import { useState } from 'react';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 
                         <Route path='support' element={<SupportProject />} />
                         <Route path='ads' element={<Ads />} />
+                        <Route path='ads/:id' element={<ProfileAd />} />
                         <Route path='add-adv' element={<AddForm />}>
                             <Route path='' element={<NewAdv />} />
                             <Route path='*' element={<NewAdv />} />
