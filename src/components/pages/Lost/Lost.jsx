@@ -21,6 +21,7 @@ export default function Lost() {
         name: '',
         tel: '',
         email: '',
+        img: '',
     });
 
     const formUpdate = (form) => {

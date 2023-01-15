@@ -3,8 +3,11 @@ import Button from '../../UI/Button/Button';
 import styles from './LostSecond.module.scss';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import { useContext } from 'react';
+import { ContextLost } from '../../pages/Lost/Context';
 
 export default function LostSecond() {
+    const { formLost, formUpdate } = useContext(ContextLost);
     const [images, setImages] = useState([]);
     const [imageUrls, setImagesUrls] = useState([]);
     const filePicker = useRef(null);
@@ -26,7 +29,9 @@ export default function LostSecond() {
 
     function inputPhoto(event) {
         setImages([...event.target.files]);
-
+        const formData = new FormData();
+        formData.append('file', images[0]);
+        formUpdate({ ...formLost, img: event.target.files[0] });
         // МЕТОД ОТПРАВКИ НА БЭК
 
         // const formData = new FormData();

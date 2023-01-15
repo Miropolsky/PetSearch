@@ -59,7 +59,7 @@ export default function Ads() {
                     Найдено {listAdd.length} объявлений
                 </div>
                 <div className={styles.search}>
-                    <SearchBar width={380} height={34} />
+                    <SearchBar widthProcent={100} />
                     <img
                         onClick={filterShow}
                         src={menu}
@@ -70,7 +70,11 @@ export default function Ads() {
                 <div className={styles.ads}>
                     {listAdd.map((el, index) => {
                         return (
-                            <Link key={el.id} to={`${el.id}`}>
+                            <Link
+                                className={styles.ad}
+                                key={el.id}
+                                to={`${el.id}`}
+                            >
                                 <Ad key={el.id} advertisement={el} />
                             </Link>
                         );

@@ -28,7 +28,14 @@ export default function RadioButton({
                 value={value}
                 defaultChecked={checked}
             />
-            <label style={{ width: width, height: height }}>{text}</label>
+            <label
+                style={{
+                    width: width,
+                    height: height,
+                }}
+            >
+                {text}
+            </label>
         </div>
     );
 }

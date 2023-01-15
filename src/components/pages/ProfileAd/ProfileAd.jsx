@@ -39,72 +39,96 @@ export default function ProfileAd() {
     return (
         <div className={styles.container}>
             {loading && (
-                <div className={styles.blocks}>
+                <div>
                     <div className={styles.images}>
                         <ImageGallery
                             items={images}
                             showFullscreenButton={false}
                             showPlayButton={false}
+                            showThumbnails={false}
                         />
                     </div>
-                    <div className={styles.title}>
-                        {ad.isLost ? (
-                            ad.animal === 'cat' ? (
-                                ad.gender === 'male' ? (
-                                    <p>
-                                        Потерялся кот, по адресу: {ad.address}
-                                    </p>
+                    <div className={styles.content}>
+                        <div className={styles.blocks}>
+                            <div className={styles.title}>
+                                {ad.isLost ? (
+                                    ad.animal === 'cat' ? (
+                                        ad.gender === 'male' ? (
+                                            <p>
+                                                Потерялся кот, по адресу:{' '}
+                                                {ad.address}
+                                            </p>
+                                        ) : (
+                                            <p>
+                                                Потерялась кошка, по адресу:{' '}
+                                                {ad.address}
+                                            </p>
+                                        )
+                                    ) : (
+                                        <p>
+                                            Потерялась собака, по адресу:{' '}
+                                            {ad.address}
+                                        </p>
+                                    )
+                                ) : ad.animal === 'cat' ? (
+                                    ad.gender === 'male' ? (
+                                        <p>Найден кот</p>
+                                    ) : (
+                                        <p>
+                                            Найдена кошка, по адресу:{' '}
+                                            {ad.address}
+                                        </p>
+                                    )
                                 ) : (
                                     <p>
-                                        Потерялась кошка, по адресу:{' '}
-                                        {ad.address}
+                                        Найдена собака, по адресу: {ad.address}
                                     </p>
-                                )
-                            ) : (
-                                <p>
-                                    Потерялась собака, по адресу: {ad.address}
-                                </p>
-                            )
-                        ) : ad.animal === 'cat' ? (
-                            ad.gender === 'male' ? (
-                                <p>Найден кот</p>
-                            ) : (
-                                <p>Найдена кошка, по адресу: {ad.address}</p>
-                            )
-                        ) : (
-                            <p>Найдена собака, по адресу: {ad.address}</p>
-                        )}
-                    </div>
-                    <div className={styles.description}>{ad.description}</div>
-                    <div className={styles.map}>
-                        <MapAd geoLat={ad.geoLat} geoLon={ad.geoLon} />
-                    </div>
-                    <div className={styles.line}></div>
-                    <div className={styles.information}>
-                        <div className={styles.informLine}>
-                            <div className={styles.informLeft}>
-                                Номер объявления
+                                )}
                             </div>
-                            <div className={styles.informRight}>{ad.id}</div>
-                        </div>
-                        <div className={styles.lineLight}></div>
-                        <div className={styles.informLine}>
-                            <div className={styles.informLeft}>Найден(а)</div>
-                            <div className={styles.informRight}>{ad.date}</div>
-                        </div>
-                        <div className={styles.lineLight}></div>
-                        <div className={styles.informLine}>
-                            <div className={styles.informLeft}>Имя</div>
-                            <div className={styles.informRight}>{ad.name}</div>
-                        </div>
-                        <div className={styles.lineLight}></div>
-                        <div className={styles.informLine}>
-                            <div className={styles.informLeft}>
-                                Номер телефона
+                            <div className={styles.description}>
+                                {ad.description}
                             </div>
-                            <div className={styles.informRight}>{ad.tel}</div>
+                            <div className={styles.map}>
+                                <MapAd geoLat={ad.geoLat} geoLon={ad.geoLon} />
+                            </div>
+                            <div className={styles.line}></div>
+                            <div className={styles.information}>
+                                <div className={styles.informLine}>
+                                    <div className={styles.informLeft}>
+                                        Номер объявления
+                                    </div>
+                                    <div className={styles.informRight}>
+                                        {ad.id}
+                                    </div>
+                                </div>
+                                <div className={styles.lineLight}></div>
+                                <div className={styles.informLine}>
+                                    <div className={styles.informLeft}>
+                                        Найден(а)
+                                    </div>
+                                    <div className={styles.informRight}>
+                                        {ad.date}
+                                    </div>
+                                </div>
+                                <div className={styles.lineLight}></div>
+                                <div className={styles.informLine}>
+                                    <div className={styles.informLeft}>Имя</div>
+                                    <div className={styles.informRight}>
+                                        {ad.name}
+                                    </div>
+                                </div>
+                                <div className={styles.lineLight}></div>
+                                <div className={styles.informLine}>
+                                    <div className={styles.informLeft}>
+                                        Номер телефона
+                                    </div>
+                                    <div className={styles.informRight}>
+                                        {ad.tel}
+                                    </div>
+                                </div>
+                                <div className={styles.lineLight}></div>
+                            </div>
                         </div>
-                        <div className={styles.lineLight}></div>
                     </div>
                 </div>
             )}

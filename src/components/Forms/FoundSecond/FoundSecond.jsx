@@ -4,8 +4,11 @@ import styles from './FoundSecond.module.scss';
 import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { useEffect } from 'react';
+import { useContext } from 'react';
+import { ContextFound } from '../../pages/Found/ContextFound';
 
 export default function FoundSecond() {
+    const { formLost, formUpdate } = useContext(ContextFound);
     const [images, setImages] = useState([]);
     const [imageUrls, setImagesUrls] = useState([]);
     const filePicker = useRef(null);
@@ -27,6 +30,9 @@ export default function FoundSecond() {
 
     function inputPhoto(event) {
         setImages([...event.target.files]);
+        const formData = new FormData();
+        formData.append('file', images[0]);
+        formUpdate({ ...formLost, img: event.target.files[0] });
 
         // МЕТОД ОТПРАВКИ НА БЭК
 
@@ -109,7 +115,13 @@ export default function FoundSecond() {
                 </div>
             </div>
             <div className={styles.next}>
-                {/* <button onClick={() => console.log(images)}>click</button> */}
+                <button
+                    onClick={() => {
+                        console.log(formLost);
+                    }}
+                >
+                    click что в форме
+                </button>
                 {/* <button onClick={() => console.log(imageUrls)}>click</button> */}
                 <Link to='/found/foundThird'>
                     <Button text='Далее' width={150} height={34} />

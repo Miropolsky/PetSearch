@@ -22,6 +22,7 @@ export default function Found() {
         name: '',
         tel: '',
         email: '',
+        img: '',
     });
     const formUpdate = (form) => {
         setFormLost(form);

@@ -24,22 +24,29 @@ export default function FoundFifth() {
         ) {
             alert('Заполните форму правильно');
         } else {
+            console.log(formLost);
             add(formLost);
+            sendData('http://localhost:8080/api/v1/poster', formLost);
             navigate('/ads');
         }
     }
 
-    function change(event) {
-        // console.log(event.target);
-        formUpdate({ ...formLost, [event.target.name]: event.target.value });
+    async function sendData(url, data) {
+        const formData = new FormData();
+
+        for (const name in data) {
+            formData.append(name, data[name]);
+        }
+        console.log(formData.get('img'));
+        await fetch(url, {
+            method: 'POST',
+            body: formData,
+        });
     }
 
-    // function postForm() {
-    //     axios
-    //         .post('http://localhost:8080/api/v1/poster', formLost)
-    //         .then((res) => console.log(res))
-    //         .catch((err) => console.log(err.response.data));
-    // }
+    function change(event) {
+        formUpdate({ ...formLost, [event.target.name]: event.target.value });
+    }
 
     return (
         <div className={styles.container}>
