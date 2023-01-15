@@ -115,14 +115,6 @@ export default function FoundSecond() {
                 </div>
             </div>
             <div className={styles.next}>
-                <button
-                    onClick={() => {
-                        console.log(formLost);
-                    }}
-                >
-                    click что в форме
-                </button>
-                {/* <button onClick={() => console.log(imageUrls)}>click</button> */}
                 <Link to='/found/foundThird'>
                     <Button text='Далее' width={150} height={34} />
                 </Link>

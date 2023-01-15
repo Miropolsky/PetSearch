@@ -13,10 +13,6 @@ export default function LostSecond() {
     const filePicker = useRef(null);
 
     useEffect(() => {
-        // if (images.length < 1) {
-        //     setImagesUrls([]);
-        //     return;
-        // }
         const newImageUrls = [];
         images.forEach((image) =>
             newImageUrls.push({
@@ -32,15 +28,6 @@ export default function LostSecond() {
         const formData = new FormData();
         formData.append('file', images[0]);
         formUpdate({ ...formLost, img: event.target.files[0] });
-        // МЕТОД ОТПРАВКИ НА БЭК
-
-        // const formData = new FormData();
-        // formData.append('file', images);
-        // const res = await fetch(hostUrl, {
-        //     method: 'POST',
-        //     body: formData
-        // });
-        // const data = await res.json();
     }
 
     function removePhoto(event) {
@@ -49,7 +36,6 @@ export default function LostSecond() {
                 return el.name !== event.target.name;
             }),
         ]);
-        // formData.append('file', images);
     }
     return (
         <div className={styles.container}>
@@ -114,8 +100,6 @@ export default function LostSecond() {
                 </div>
             </div>
             <div className={styles.next}>
-                {/* <button onClick={() => console.log(images)}>click</button> */}
-                {/* <button onClick={() => console.log(imageUrls)}>click</button> */}
                 <Link to='/found/foundThird'>
                     <Button text='Далее' width={150} height={34} />
                 </Link>

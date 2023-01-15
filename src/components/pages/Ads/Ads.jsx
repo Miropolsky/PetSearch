@@ -59,7 +59,7 @@ export default function Ads() {
                     Найдено {listAdd.length} объявлений
                 </div>
                 <div className={styles.search}>
-                    <SearchBar widthProcent={100} />
+                    <SearchBar widthProcent={100} height={34} />
                     <img
                         onClick={filterShow}
                         src={menu}
