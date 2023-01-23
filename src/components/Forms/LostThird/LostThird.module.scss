@@ -5,10 +5,20 @@
     justify-content: center;
 
     .text{
-        margin-top: 6%;
+        margin-top: 5%;
         width: 500px;
         line-height: 18px;
         font-weight: 500;
+    }
+
+    .textAdres{
+        margin-top: 2%;
+        width: 500px;
+        line-height: 18px;
+        font-weight: 500;
+        div{
+            margin-top: 1%;
+        }
     }
 
     .photos{
@@ -19,6 +29,32 @@
     }
 
     .next{
-        margin-top: 15%;
+        margin-top: 6.5%;
+    }
+
+    .inputAdres {
+        border-radius: 12px;
+        margin-top: 2%;
+        border: 0px solid white;
+        background-color: #E7E7E7;
+        box-sizing: border-box;
+        height: 28px;
+        width: 80%;
+    }
+
+    input[type=date]{
+        margin-top: 2%;
+        background-color: #E4E4E4;
+        padding: 5px;
+        padding-left: 15px;
+        color: black;
+        font-size: 14px;
+        border: none;
+        outline: none;
+        border-radius: 12px;
+    }
+    ::-webkit-calendar-picker-indicator{
+        cursor: pointer;
+        font-size: 16px;
     }
 }

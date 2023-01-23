@@ -5,7 +5,7 @@
     justify-content: center;
 
     .text{
-        margin-top: 6%;
+        margin-top: 2%;
         width: 500px;
         line-height: 18px;
         font-weight: 500;
@@ -23,12 +23,12 @@
     }
 
     .next{
-        margin-top: 5%;
+        margin-top: 3%;
     }
 
     textarea {
         border-radius: 12px;
-        margin-top: 2%;
+        margin-top: 1%;
         border: 0px solid white;
         background-color: #E4E4E4;
         box-sizing: border-box;
@@ -37,8 +37,9 @@
         height: 100px;
         padding-left: 2%;
         padding-top: 5px;
-        color: #848484;
+        color: #000000;
         font-size: 14px;
+        resize: none;
         &::placeholder {
             color: #A7A7A7;
         }

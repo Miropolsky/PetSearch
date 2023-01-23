@@ -21,6 +21,7 @@ import FoundFourth from './components/Forms/FoundFourth/FoundFourth';
 import FoundFifth from './components/Forms/FoundFifth/FoundFifth';
 import { CostumList } from './components/ListAds';
 import ProfileAd from './components/pages/ProfileAd/ProfileAd';
+import Authorization from './components/pages/Authorization/Authorization';
 // import { useState } from 'react';
 
 function App() {
@@ -34,6 +35,10 @@ function App() {
                         <Route path='contacts' element={<Contacts />} />
 
                         <Route path='support' element={<SupportProject />} />
+                        <Route
+                            path='authorization'
+                            element={<Authorization />}
+                        />
                         <Route path='ads' element={<Ads />} />
                         <Route path='ads/:id' element={<ProfileAd />} />
                         <Route path='add-adv' element={<AddForm />}>

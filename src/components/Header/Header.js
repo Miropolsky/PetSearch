@@ -19,7 +19,9 @@ export default function Header() {
             <Link to='/add-adv'>
                 <Button text='Создать объявление' />
             </Link>
-            <Linker className={styles.ads} text='Войти' />
+            <Link to='authorization'>
+                <Linker className={styles.ads} text='Войти' />
+            </Link>
         </div>
     );
 }

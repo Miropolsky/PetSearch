@@ -1,0 +1,93 @@
+.container {
+    display: flex;
+    background-color: #f2f2f2;
+    height: 760px;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 3%;
+
+    .containerForm{
+        width: 539px;
+        height: 524px;
+        background-color: white;
+        border-radius: 32px;
+        display: flex;
+        flex-direction: column;
+        
+
+        .textUp{
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 14%;
+            margin-left: 10%;
+        }
+
+        .inputForm{
+            margin-top: 7%;
+            margin-left: 10%;
+            .text {
+                font-weight: 500;
+                margin-bottom: 2%;
+            }
+            input[type=password], input[type=tel], input[type=email] {
+                border-radius: 12px;
+                border: 0px solid white;
+                background-color: #E7E7E7;
+                box-sizing: border-box;
+                height: 28px;
+                width: 70%;
+                padding-left: 2%;
+                &::placeholder {
+                    color: #A7A7A7;
+                }
+            }
+
+            
+        }
+        .forget{
+            margin-top: 6%;
+            margin-left: 10%;
+        }
+
+        .buttons{
+            margin-top: 6%;
+            display: flex;
+            align-items: center;
+            margin-left: 10%;
+            div:nth-child(2){
+                margin-left: 5%;
+            }
+
+            %btn {
+                appearance: none;
+                border: 0;
+                border-radius: 12px;
+                background: #4565FF;
+                color: #fff;
+                padding: 10px 16px;
+                font-size: 16px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // font-weight: 600;
+                letter-spacing: 0.1ch;
+            }
+            
+            .btn {
+                @extend %btn;
+            }
+            
+            .btnWhite{
+                @extend %btn;
+                color: black;
+                background-color: #F4F4F4;
+                padding: 7.5px 14px;
+                border: 3px solid #4565FF;
+            }
+            
+            .btn:hover, .btnWhite:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
