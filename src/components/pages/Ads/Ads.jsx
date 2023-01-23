@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 
 export default function Ads() {
     const { list } = useContext(ListAds);
+    // const [list, setList] = useState(list);
     const [listAdd, setListAdd] = useState(list);
     const [isFilter, setIsFilter] = useState(false);
     const [filter, setFilter] = useState({
@@ -22,14 +23,26 @@ export default function Ads() {
         isLost: '',
     });
 
+    // const url = 'http://localhost:8080/api/v1/poster';
+    // useEffect(() => {
+    //     fetch(url + '/all')
+    //         .then((res) => res.json())
+    //         .then((res) => setList(res));
+    // }, []);
+
     function handleFilter(e) {
         e.currentTarget.querySelector('input').checked = true;
         const eventInput = e.currentTarget.querySelector('input');
         setFilter({ ...filter, [eventInput.name]: eventInput.value });
     }
 
-    function filterAds() {
+    async function filterAds() {
         let newList = list;
+        // console.log(filter.isLost === '0');
+        // await fetch(url + '/all')
+        //     .then((res) => res.json())
+        //     .then((res) => console.log(res));
+
         if (filter.animal !== '') {
             newList = newList.filter((ad) => ad.animal === filter.animal);
         }
@@ -91,7 +104,7 @@ export default function Ads() {
                     />
                 )}
                 {/* <MapYandex ads={list} /> */}
-                <OpenMap list={listAdd} />
+                <OpenMap list={listAdd} center={[55.702868, 55.530865]} />
             </div>
         </div>
     );

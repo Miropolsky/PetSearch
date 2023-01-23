@@ -1,10 +1,10 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import styles from './OpenMap.module.scss';
 
-export default function OpenMap({ list }) {
+export default function OpenMap({ list, center }) {
     return (
         <MapContainer
-            center={[55.702868, 55.530865]}
+            center={center}
             zoom={7}
             scrollWheelZoom={false}
             className={styles.map}

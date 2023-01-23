@@ -22,14 +22,14 @@
         }
 
         .inputForm{
-            margin-top: 7%;
+            margin-top: 5%;
             margin-left: 15%;
             .text {
                 font-weight: 500;
                 font-size: 18px;
                 margin-bottom: 2%;
             }
-            input[type=password], input[type=tel], input[type=email] {
+            input[type=password], input[type=tel], input[type=email], input[type=text] {
                 border-radius: 12px;
                 border: 0px solid white;
                 background-color: #E7E7E7;

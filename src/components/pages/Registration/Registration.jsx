@@ -1,15 +1,20 @@
 import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-import styles from './Authorization.module.scss';
+import styles from './Registration.module.scss';
 
-export default function Authorization() {
+export default function Registration() {
     return (
         <div className={styles.container}>
             <div className={styles.containerForm}>
-                <div className={styles.textUp}>Войти</div>
+                <div className={styles.textUp}>Регистрация</div>
                 <Formik
-                    initialValues={{ email: '', password: '' }}
+                    initialValues={{
+                        name: '',
+                        email: '',
+                        tel: '',
+                        password: '',
+                    }}
                     validate={(values) => {
                         const errors = {};
                         if (!values.email) {
@@ -40,7 +45,20 @@ export default function Authorization() {
                         <form onSubmit={handleSubmit}>
                             <div className={styles.inputForm}>
                                 <div className={styles.text}>
-                                    Введите e-mail или телефон:
+                                    Введите ваше имя:
+                                </div>
+                                <input
+                                    type='text'
+                                    name='name'
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.name}
+                                    placeholder='Василий'
+                                />
+                            </div>
+                            <div className={styles.inputForm}>
+                                <div className={styles.text}>
+                                    Введите e-mail:
                                 </div>
                                 <input
                                     type='email'
@@ -51,6 +69,20 @@ export default function Authorization() {
                                     placeholder='example@email.com'
                                 />
                                 {/* {errors.email && touched.email && errors.email} */}
+                            </div>
+
+                            <div className={styles.inputForm}>
+                                <div className={styles.text}>
+                                    Введите ваш телефон:
+                                </div>
+                                <input
+                                    type='tel'
+                                    name='tel'
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.tel}
+                                    placeholder='+7(999)-999-99-99'
+                                />
                             </div>
 
                             <div className={styles.inputForm}>
@@ -69,23 +101,14 @@ export default function Authorization() {
                                     touched.password &&
                                     errors.password} */}
                             </div>
-
-                            <Link to='/recoveryPassword'>
-                                <div className={styles.forget}>
-                                    Забыли пароль?
-                                </div>
-                            </Link>
                             <div className={styles.buttons}>
                                 <button
                                     className={styles.btn}
                                     type='submit'
                                     // disabled={isSubmitting}
                                 >
-                                    Войти
+                                    Зарегистрироваться
                                 </button>
-                                <Link to='/registration'>
-                                    <div>Зарегистрироваться</div>
-                                </Link>
                             </div>
                         </form>
                     )}

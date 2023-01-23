@@ -5,15 +5,27 @@
     display: flex;
     align-items: center;
     background-color: white;
-    justify-content: center;
     padding-left: 0%;
 
-    .textBlock {
-        margin-left: 5%;
-        flex-direction: column;
+    .photo>img{
+        border-radius: 15px;
+    }
 
+    .textBlock {
+        align-self: flex-start;
+        margin-top: 3%;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: column;
+        
         .text{
-            line-height: 1.2;
+            line-height: 1.1;
+            height: 82px;
+            word-wrap: break-word;
+            .textTitle{
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
         }
 
         .features{
