@@ -11,12 +11,15 @@ import { ListAds } from '../../ListAds';
 import OpenMap from '../../OpenMap/OpenMap';
 import Filter from '../../Filter/Filter';
 import { Link } from 'react-router-dom';
+// import { AddressSuggestions } from 'react-dadata';
+// import { useEffect } from 'react';
 
 export default function Ads() {
     const { list } = useContext(ListAds);
     // const [list, setList] = useState(list);
     const [listAdd, setListAdd] = useState(list);
     const [isFilter, setIsFilter] = useState(false);
+    const center = [55.702868, 55.530865];
     const [filter, setFilter] = useState({
         animal: '',
         gender: '',
@@ -65,6 +68,10 @@ export default function Ads() {
         setIsFilter(!isFilter);
     }
 
+    // function handleAdres(event) {
+    //     setCenter([+event.data.geo_lat, +event.data.geo_lon]);
+    // }
+
     return (
         <div className={styles.container}>
             <div className={styles.adsBlock}>
@@ -73,6 +80,13 @@ export default function Ads() {
                 </div>
                 <div className={styles.search}>
                     <SearchBar widthProcent={100} height={34} />
+
+                    {/* <AddressSuggestions
+                        // containerClassName={styles.inputAdres}
+                        token='8be332587e89276d9ca93894f0a6e31914900579'
+                        onChange={handleAdres}
+                    /> */}
+
                     <img
                         onClick={filterShow}
                         src={menu}
@@ -103,8 +117,7 @@ export default function Ads() {
                         filterShow={filterShow}
                     />
                 )}
-                {/* <MapYandex ads={list} /> */}
-                <OpenMap list={listAdd} center={[55.702868, 55.530865]} />
+                <OpenMap list={listAdd} center={center} />
             </div>
         </div>
     );

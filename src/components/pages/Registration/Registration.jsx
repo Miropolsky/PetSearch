@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 import styles from './Registration.module.scss';
@@ -109,6 +110,9 @@ export default function Registration() {
                                 >
                                     Зарегистрироваться
                                 </button>
+                                <Link to='/authorization'>
+                                    <div>У меня уже есть аккаунт</div>
+                                </Link>
                             </div>
                         </form>
                     )}

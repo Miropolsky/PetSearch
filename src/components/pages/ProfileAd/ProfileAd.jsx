@@ -102,6 +102,7 @@ export default function ProfileAd() {
                                     </div>
                                 </div>
                                 <div className={styles.lineLight}></div>
+
                                 <div className={styles.informLine}>
                                     <div className={styles.informLeft}>
                                         Найден(а)
