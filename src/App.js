@@ -23,6 +23,7 @@ import { CostumList } from './components/ListAds';
 import ProfileAd from './components/pages/ProfileAd/ProfileAd';
 import Authorization from './components/pages/Authorization/Authorization';
 import Registration from './components/pages/Registration/Registration';
+import Profile from './components/pages/Profile/Profile';
 // import { useState } from 'react';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
                             element={<Authorization />}
                         />
                         <Route path='registration' element={<Registration />} />
+                        <Route path='profile' element={<Profile />} />
                         <Route path='ads' element={<Ads />} />
                         <Route path='ads/:id' element={<ProfileAd />} />
                         <Route path='add-adv' element={<AddForm />}>

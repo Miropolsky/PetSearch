@@ -64,3 +64,24 @@
 
     
 }
+
+.inputik {
+    border-radius: 12px;
+    height: 32px;
+    width: 100%;
+    border: 0px solid white;
+    background-color: #E7E7E7;
+    box-sizing: border-box;
+    padding-left: 3%;
+    &::placeholder {
+        color: #A7A7A7;
+        letter-spacing: 1px;
+        font-size: 14px;
+        font-weight: 600;
+        padding-left: 10%;
+        background: url('../../../img/icons/icons8-поиск-30.png') no-repeat;
+        background-size: 22px 22px;
+        background-position-y: center;
+        margin-right: 2%;
+    }
+}
