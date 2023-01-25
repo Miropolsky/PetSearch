@@ -5,4 +5,54 @@
     align-items: center;
     flex-direction: column;
     padding-top: 7%;
+
+    .whiteBackground{
+        width: 80%;
+        height: 80%;
+        background-color: white;
+        border-radius: 32px;
+        
+        .containerProfile{
+            margin-top: 7%;
+            margin-left: 7%;
+            display: flex;
+            flex-direction: column;
+            
+            .logoProfile{
+                font-size: 22px;
+                font-weight: 500;
+            }
+
+            .content{
+                margin-top: 4%;
+                display: flex;
+
+                .menu{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    .exit{
+                        margin-top: 30%;
+                    }
+                }
+
+                .myAds{
+                    margin-left: 10%;
+
+                    .titleAds{
+                        font-size: 20px;
+                        font-weight: 500;
+                    }
+
+                    .ads{
+                        margin-top: 7%;
+                    }
+                }
+            }
+            
+        }
+
+    }
+
+    
 }
