@@ -14,15 +14,11 @@ export default function FoundSecond() {
     const filePicker = useRef(null);
 
     useEffect(() => {
-        // if (images.length < 1) {
-        //     setImagesUrls([]);
-        //     return;
-        // }
         const newImageUrls = [];
         images.forEach((image) =>
             newImageUrls.push({
                 url: URL.createObjectURL(image),
-                name: image.name,
+                name: image.name
             })
         );
         setImagesUrls(newImageUrls);
@@ -34,15 +30,6 @@ export default function FoundSecond() {
         formData.append('file', images[0]);
         formUpdate({ ...formLost, img: event.target.files[0] });
 
-        // МЕТОД ОТПРАВКИ НА БЭК
-
-        // const formData = new FormData();
-        // formData.append('file', images);
-        // const res = await fetch(hostUrl, {
-        //     method: 'POST',
-        //     body: formData
-        // });
-        // const data = await res.json();
     }
 
     function removePhoto(event) {

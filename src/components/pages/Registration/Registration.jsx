@@ -18,6 +18,9 @@ export default function Registration() {
                     }}
                     validate={(values) => {
                         const errors = {};
+                        if (!values.name) {
+                            errors.name = 'Заполните поле';
+                        }
                         if (!values.email) {
                             errors.email = 'Заполните поле';
                         } else if (
@@ -26,6 +29,17 @@ export default function Registration() {
                             )
                         ) {
                             errors.email = 'Invalid email address';
+                        }
+                        if (!values.password) {
+                            errors.password = 'Заполните поле';
+                        } else if (values.password.length < 6) {
+                            errors.password =
+                                'Пароль должен содержать не менее 6 символов';
+                        }
+                        if (!values.tel) {
+                            errors.tel = 'Заполните поле';
+                        } else if (values.tel.length < 13) {
+                            errors.tel = 'Введите корректный номер телефона';
                         }
                         return errors;
                     }}
@@ -56,6 +70,13 @@ export default function Registration() {
                                     value={values.name}
                                     placeholder='Василий'
                                 />
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                    }}
+                                >
+                                    {errors.name && touched.name && errors.name}
+                                </div>
                             </div>
                             <div className={styles.inputForm}>
                                 <div className={styles.text}>
@@ -69,7 +90,15 @@ export default function Registration() {
                                     value={values.email}
                                     placeholder='example@email.com'
                                 />
-                                {/* {errors.email && touched.email && errors.email} */}
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                    }}
+                                >
+                                    {errors.email &&
+                                        touched.email &&
+                                        errors.email}
+                                </div>
                             </div>
 
                             <div className={styles.inputForm}>
@@ -84,6 +113,13 @@ export default function Registration() {
                                     value={values.tel}
                                     placeholder='+7(999)-999-99-99'
                                 />
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                    }}
+                                >
+                                    {errors.tel && touched.tel && errors.tel}
+                                </div>
                             </div>
 
                             <div className={styles.inputForm}>
@@ -98,9 +134,15 @@ export default function Registration() {
                                     value={values.password}
                                     placeholder='Пароль'
                                 />
-                                {/* {errors.password &&
-                                    touched.password &&
-                                    errors.password} */}
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                    }}
+                                >
+                                    {errors.password &&
+                                        touched.password &&
+                                        errors.password}
+                                </div>
                             </div>
                             <div className={styles.buttons}>
                                 <button

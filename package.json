@@ -9,6 +9,7 @@
     "axios": "^1.2.0",
     "formik": "^2.2.9",
     "leaflet": "^1.9.3",
+    "node-sass": "^7.0.3",
     "postcss-color-function": "^4.1.0",
     "react": "^18.2.0",
     "react-dadata": "^2.23.0",

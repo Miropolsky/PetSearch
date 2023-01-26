@@ -1,13 +1,13 @@
 import styles from './Ads.module.scss';
 // import map from '../../../img/map.svg'
-import SearchBar from '../../UI/SearchBar/SearchBar';
+// import SearchBar from '../../UI/SearchBar/SearchBar';
 // import cat from '../../../img/cat.svg';
 // import metka from '../../../img/metka.svg';
 // import MapYandex from '../../MapYandex/MapYandex';
 import menu from '../../../img/icons/menu.svg';
 import Ad from '../../Ad/Ad';
-import { useContext, useState, useEffect } from 'react';
-import { ListAds } from '../../ListAds';
+import { useState, useEffect } from 'react';
+// import { ListAds } from '../../ListAds';
 import OpenMap from '../../OpenMap/OpenMap';
 import Filter from '../../Filter/Filter';
 import { Link } from 'react-router-dom';
@@ -15,54 +15,57 @@ import { AddressSuggestions } from 'react-dadata';
 // import { useEffect } from 'react';
 
 export default function Ads() {
-    const { list } = useContext(ListAds);
+    const [list, setList] = useState([]);
     // const [list, setList] = useState(list);
-    const [listAdd, setListAdd] = useState(list);
+    // const [listAdd, setListAdd] = useState([]);
     const [isFilter, setIsFilter] = useState(false);
-    const [center, setCenter] = useState([55.702868, 55.530865]);
+    const [center, setCenter] = useState([55.755864, 37.617698]);
     const [filter, setFilter] = useState({
         animal: '',
         gender: '',
         isLost: '',
     });
 
-    // const [curPage, setCurPage] = useState(1);
-    // const [fetching, setFetching] = useState(true);
-    // const [totalCount, setTotalCount] = useState(0);
+    const [curPage, setCurPage] = useState(0);
+    const [fetching, setFetching] = useState(false);
+    const [totalCount, setTotalCount] = useState(0);
+    const [totalCountFilter, setTotalCountFilter] = useState(0);
 
-    // const url = 'http://localhost:8080/api/v1/poster';
-    // useEffect(() => {
-    //     if (fetching) {
-    //         fetch(url + `page=${curPage}`)
-    //             .then((res) => res.json())
-    //             .then((res) => {
-    //                 setList(res);
-    //                 setCurPage((prev) => prev + 1);
-    //                 setTotalCount(res.total);
-    //             })
-    //             .finally(() => setFetching(false));
-    //     }
-    // }, [fetching]);
+    const url = 'http://localhost:8080/ads/all';
 
-    // useEffect(() => {
-    //     document.addEventListener('scroll', scrollHandler);
-    //     return function () {
-    //         document.removeEventListener('scroll', scrollHandler);
-    //     };
-    // }, []);
+    useEffect(() => {
+        fetch(url + `?page=${curPage}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setList(res.content);
+                //setListAdd(res.content)
+                setCurPage((prev) => prev + 1);
+                setTotalCount(res.totalElements);
+                setCenter([res.content[0].geo_lat, res.content[0].geo_lon]);
+            });
+        // eslint-disable-next-line
+    }, []);
+
+    useEffect(() => {
+        if (fetching) {
+            fetch(url + `?page=${curPage}`)
+                .then((res) => res.json())
+                .then((res) => {
+                    setList((prev) => [...prev, ...res.content]);
+                    setCurPage((prev) => prev + 1);
+                })
+                .finally(() => setFetching(false));
+        }
+        // eslint-disable-next-line
+    }, [fetching]);
 
     function scrollHandler(e) {
-        // console.log(e);
-        // console.log('clientheight', e.target.clientHeight);
-        // console.log('offsetTop', e.target.offsetTop);
-        // console.log('scrollTop', e.target.scrollTop);
-        // console.log(e.target.lastChild.clientHeight);
-        // console.log(window.innerHeight);
         if (
             e.target.scrollHeight - (e.target.scrollTop + window.innerHeight) <
-            100
+                100 &&
+            list.length < totalCount
         ) {
-            // setFetching(true)
+            setFetching(true);
         }
     }
 
@@ -73,26 +76,67 @@ export default function Ads() {
     }
 
     async function filterAds() {
-        let newList = list;
-        // console.log(filter.isLost === '0');
-        // await fetch(url + '/all')
-        //     .then((res) => res.json())
-        //     .then((res) => console.log(res));
+        // setListAdd(list);
+        let url = 'http://localhost:8080/ads/all/';
 
         if (filter.animal !== '') {
-            newList = newList.filter((ad) => ad.animal === filter.animal);
+            url += `a`;
         }
         if (filter.gender !== '') {
-            newList = newList.filter((ad) => ad.gender === filter.gender);
+            url += `g`;
         }
         if (filter.isLost !== '') {
-            newList = newList.filter((ad) => ad.isLost === !!+filter.isLost);
+            url += `l`;
         }
-        setListAdd(newList);
+        if (
+            filter.animal !== '' ||
+            filter.gender !== '' ||
+            filter.isLost !== ''
+        )
+            url += `?`;
+
+        if (filter.animal !== '') {
+            url += `animal=${filter.animal}`;
+        }
+        if (filter.gender !== '') {
+            if (filter.animal !== '') {
+                url += `&`;
+            }
+            url += `gender=${filter.gender}`;
+        }
+        if (filter.isLost !== '') {
+            if (filter.animal !== '' || filter.gender !== '') {
+                url += `&`;
+            }
+            url += `isLost=${filter.isLost}`;
+        }
+        console.log(url);
+        await fetch(url)
+            .then((res) => res.json())
+            .then((res) => {
+                setList(res.content);
+                setTotalCountFilter(totalCount);
+                setTotalCount(res.totalElements);
+            });
     }
 
     function resetFilterAds() {
-        setListAdd(list);
+        //setList(listAdd);
+        setTotalCount(totalCountFilter);
+        setFilter({
+            animal: '',
+            gender: '',
+            isLost: '',
+        });
+        setCurPage(0);
+        fetch(url + `?page=${curPage}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setList(res.content);
+                //setListAdd(res.content)
+                setCurPage((prev) => prev + 1);
+                setTotalCount(res.totalElements);
+            });
         let inputs = document.querySelectorAll('input');
         inputs.forEach((el) => (el.checked = false));
     }
@@ -104,7 +148,7 @@ export default function Ads() {
     function handleAdres(e) {
         console.log(e.data.geo_lon);
         console.log(e.data.geo_lat);
-        // setCenter([+event.data.geo_lat, +event.data.geo_lon]);
+        setCenter([e.data.geo_lat, e.data.geo_lon]);
     }
 
     const inputik = { color: '#494949', padding: '20px' };
@@ -113,7 +157,7 @@ export default function Ads() {
         <div className={styles.container}>
             <div className={styles.adsBlock} onScroll={scrollHandler}>
                 <div className={styles.founder}>
-                    Найдено {listAdd.length} объявлений
+                    Найдено {totalCount} объявлений
                 </div>
                 <div className={styles.search}>
                     {/* <SearchBar widthProcent={100} height={34} /> */}
@@ -136,7 +180,7 @@ export default function Ads() {
                     />
                 </div>
                 <div className={styles.ads}>
-                    {listAdd.map((el, index) => {
+                    {list.map((el, index) => {
                         return (
                             <Link
                                 className={styles.ad}
@@ -158,7 +202,7 @@ export default function Ads() {
                         filterShow={filterShow}
                     />
                 )}
-                <OpenMap list={listAdd} center={center} />
+                <OpenMap list={list} geoLat={center[0]} geoLon={center[1]} />
             </div>
         </div>
     );

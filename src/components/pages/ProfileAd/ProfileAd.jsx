@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ListAds } from '../../ListAds';
 import 'react-image-gallery/styles/scss/image-gallery.scss';
-import kotik from '../../../img/kotik.jpg';
+// import kotik from '../../../img/kotik.jpg';
 import ImageGallery from 'react-image-gallery';
 import { useState } from 'react';
 import MapAd from '../MapAd/MapAd';
@@ -12,28 +12,42 @@ export default function ProfileAd() {
     const { id } = useParams();
     const { list } = useContext(ListAds);
     const [loading, setLoading] = useState(false);
+    const [isTel, setIsTel] = useState(false);
     const [ad, setAd] = useState({});
+    const url = 'http://localhost:8080/ads/id';
+
+    const [img, setImg] = useState();
 
     useEffect(() => {
+        fetch(url + `?id=${id}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setAd(res);
+                console.log(res);
+            });
         setAd(list.filter((el) => el.id === +id)[0]);
         setLoading(true);
+        fetchImage();
         // eslint-disable-next-line
     }, []);
 
+    useEffect(() => {
+        fetchImage();
+        // eslint-disable-next-line
+    }, [ad]);
+
+    const fetchImage = async () => {
+        const res = await fetch(
+            'http://localhost:8080/ads/file?fileName=' + ad.filename
+        );
+        const imageBlob = await res.blob();
+        const imageObjectURL = URL.createObjectURL(imageBlob);
+        setImg(imageObjectURL);
+    };
     const images = [
         {
-            original:
-                'https://i.pinimg.com/736x/00/d4/3d/00d43da1ca08eb847f6e018db466a527.jpg',
-            thumbnail:
-                'https://i.pinimg.com/736x/00/d4/3d/00d43da1ca08eb847f6e018db466a527.jpg',
-        },
-        {
-            original: kotik,
-            thumbnail: kotik,
-        },
-        {
-            original: kotik,
-            thumbnail: kotik,
+            original: img,
+            thumbnail: img,
         },
     ];
     return (
@@ -124,7 +138,16 @@ export default function ProfileAd() {
                                         Номер телефона
                                     </div>
                                     <div className={styles.informRight}>
-                                        {ad.tel}
+                                        {isTel ? (
+                                            <>{ad.tel}</>
+                                        ) : (
+                                            <button
+                                                className={styles.btnTel}
+                                                onClick={() => setIsTel(true)}
+                                            >
+                                                Показать
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                                 <div className={styles.lineLight}></div>

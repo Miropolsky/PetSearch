@@ -1,10 +1,16 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import {MapContainer, TileLayer, Marker, Popup, useMap} from 'react-leaflet';
 import styles from './OpenMap.module.scss';
 
-export default function OpenMap({ list, center }) {
+function ChangeView({ center, zoom }) {
+    const map = useMap();
+    map.setView(center, zoom);
+    return null;
+}
+
+export default function OpenMap({ list, geoLat = 55.755864, geoLon =37.617698 }) {
     return (
         <MapContainer
-            center={center}
+            center={[geoLat,geoLon]}
             zoom={7}
             scrollWheelZoom={false}
             className={styles.map}
@@ -13,6 +19,7 @@ export default function OpenMap({ list, center }) {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             />
+            <ChangeView center={[geoLat,geoLon]} zoom={10} />
             {/* <MarkerClusterGroup> */}
             <div className={styles.popup}>
                 {list.map((ad) => {

@@ -2,7 +2,7 @@ import './App.css';
 import Main from './components/pages/main/Main';
 import { Routes, Route } from 'react-router-dom';
 import AddForm from './components/pages/AddForm/AddForm';
-import Layout from './components/Layout/Layout';
+// import Layout from './components/Layout/Layout';
 import LostFirst from './components/Forms/LostFirst/LostFirst';
 import NewAdv from './components/Forms/NewAdv/NewAdv';
 import Lost from './components/pages/Lost/Lost';
@@ -24,6 +24,7 @@ import ProfileAd from './components/pages/ProfileAd/ProfileAd';
 import Authorization from './components/pages/Authorization/Authorization';
 import Registration from './components/pages/Registration/Registration';
 import Profile from './components/pages/Profile/Profile';
+import Global from './components/Layout/Global';
 // import { useState } from 'react';
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
         <div className='App'>
             <CostumList>
                 <Routes>
-                    <Route path='/' element={<Layout />}>
+                    <Route path='/' element={<Global />}>
                         <Route index element={<Main />} />
                         <Route path='*' element={<Main />} />
                         <Route path='contacts' element={<Contacts />} />

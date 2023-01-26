@@ -17,7 +17,7 @@ export default function LostSecond() {
         images.forEach((image) =>
             newImageUrls.push({
                 url: URL.createObjectURL(image),
-                name: image.name,
+                name: image.name
             })
         );
         setImagesUrls(newImageUrls);
@@ -100,7 +100,7 @@ export default function LostSecond() {
                 </div>
             </div>
             <div className={styles.next}>
-                <Link to='/found/foundThird'>
+                <Link to='/lost/lostThird'>
                     <Button text='Далее' width={150} height={34} />
                 </Link>
             </div>

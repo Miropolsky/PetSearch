@@ -39,7 +39,7 @@ export default function Filter({
                         handleFilter={handleFilter}
                         text='Другое'
                         name='animal'
-                        value='no'
+                        value=''
                         width={120}
                         height={30}
                     />
@@ -68,7 +68,7 @@ export default function Filter({
                         handleFilter={handleFilter}
                         text='Не знаю'
                         name='gender'
-                        value='no'
+                        value=''
                         width={120}
                         height={30}
                     />

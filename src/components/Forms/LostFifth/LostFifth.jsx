@@ -13,7 +13,7 @@ export default function LostFifth() {
     const { add } = useContext(ListAds);
 
     const navigate = useNavigate();
-    function checkForm() {
+    async function checkForm() {
         const re =
             /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i; //eslint-disable-line
 
@@ -26,7 +26,7 @@ export default function LostFifth() {
         } else {
             console.log(formLost);
             add(formLost);
-            sendData('http://localhost:8080/api/v1/poster', formLost);
+            await sendData('http://localhost:8080/ads/new', formLost);
             navigate('/ads');
         }
     }
@@ -44,7 +44,7 @@ export default function LostFifth() {
         console.log(formData.get('img'));
         await fetch(url, {
             method: 'POST',
-            body: formData,
+            body: formData
         });
     }
 

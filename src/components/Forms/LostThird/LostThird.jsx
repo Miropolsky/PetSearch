@@ -38,7 +38,7 @@ export default function LostThird() {
         if (formLost.date === '' || formLost.address === '') {
             alert('Заполните поля');
         } else {
-            navigate('/found/foundFourth');
+            navigate('/lost/lostFourth');
         }
     }
 

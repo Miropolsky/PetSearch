@@ -1,9 +1,12 @@
 import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
-
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { GlobalContex } from '../../Layout/GlobalContex';
 import styles from './Authorization.module.scss';
 
 export default function Authorization() {
+    const { handleAuthorization } = useContext(GlobalContex);
+    const navigate = useNavigate();
     return (
         <div className={styles.container}>
             <div className={styles.containerForm}>
@@ -19,12 +22,20 @@ export default function Authorization() {
                                 values.email
                             )
                         ) {
-                            errors.email = 'Invalid email address';
+                            errors.email = 'Неверный email адрес';
+                        }
+                        if (!values.password) {
+                            errors.password = 'Заполните поле';
+                        } else if (values.password.length < 6) {
+                            errors.password =
+                                'Пароль должен содержать не менее 6 символов';
                         }
                         return errors;
                     }}
                     onSubmit={(values) => {
                         console.log(values);
+                        handleAuthorization(true);
+                        navigate('/profile');
                     }}
                 >
                     {({
@@ -50,7 +61,15 @@ export default function Authorization() {
                                     value={values.email}
                                     placeholder='example@email.com'
                                 />
-                                {/* {errors.email && touched.email && errors.email} */}
+                                <div
+                                    style={{
+                                        position: 'absolute',
+                                    }}
+                                >
+                                    {errors.email &&
+                                        touched.email &&
+                                        errors.email}
+                                </div>
                             </div>
 
                             <div className={styles.inputForm}>
@@ -65,9 +84,11 @@ export default function Authorization() {
                                     value={values.password}
                                     placeholder='Пароль'
                                 />
-                                {/* {errors.password &&
-                                    touched.password &&
-                                    errors.password} */}
+                                <div style={{ position: 'absolute' }}>
+                                    {errors.password &&
+                                        touched.password &&
+                                        errors.password}
+                                </div>
                             </div>
 
                             <Link to='/recoveryPassword'>
