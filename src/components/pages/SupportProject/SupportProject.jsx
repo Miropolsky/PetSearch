@@ -29,7 +29,7 @@ export default function SupportProject() {
                         />
                     </div>
                     <textarea
-                        placeholder='Ваше сообщение(необязательно)'
+                        placeholder='Ваше сообщение'
                         rows='7'
                         cols='65'
                     ></textarea>
