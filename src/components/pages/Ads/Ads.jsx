@@ -6,12 +6,13 @@ import styles from './Ads.module.scss';
 // import MapYandex from '../../MapYandex/MapYandex';
 import menu from '../../../img/icons/menu.svg';
 import Ad from '../../Ad/Ad';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 // import { ListAds } from '../../ListAds';
 import OpenMap from '../../OpenMap/OpenMap';
 import Filter from '../../Filter/Filter';
 import { Link } from 'react-router-dom';
 import { AddressSuggestions } from 'react-dadata';
+import { ListAds } from '../../ListAds';
 // import { useEffect } from 'react';
 
 export default function Ads() {
@@ -31,31 +32,37 @@ export default function Ads() {
     const [totalCount, setTotalCount] = useState(0);
     const [totalCountFilter, setTotalCountFilter] = useState(0);
 
-    const url = 'http://localhost:8080/ads/all';
+    // const url = 'http://localhost:8080/ads/all';
+    const context = useContext(ListAds);
 
     useEffect(() => {
-        fetch(url + `?page=${curPage}`)
-            .then((res) => res.json())
-            .then((res) => {
-                setList(res.content);
-                //setListAdd(res.content)
-                setCurPage((prev) => prev + 1);
-                setTotalCount(res.totalElements);
-                setCenter([res.content[0].geo_lat, res.content[0].geo_lon]);
-            });
+        console.log(context);
+        setList(context.list);
+        setCurPage(0);
+        setTotalCount(context.list.length);
+        setCenter(context.list[0].geoLat, context.list[0].geoLon);
+        // fetch(url + `?page=${curPage}`)
+        //     .then((res) => res.json())
+        //     .then((res) => {
+        //         setList(res.content);
+        //         //setListAdd(res.content)
+        //         setCurPage((prev) => prev + 1);
+        //         setTotalCount(res.totalElements);
+        //         setCenter([res.content[0].geo_lat, res.content[0].geo_lon]);
+        //     });
         // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
-        if (fetching) {
-            fetch(url + `?page=${curPage}`)
-                .then((res) => res.json())
-                .then((res) => {
-                    setList((prev) => [...prev, ...res.content]);
-                    setCurPage((prev) => prev + 1);
-                })
-                .finally(() => setFetching(false));
-        }
+        // if (fetching) {
+        //     fetch(url + `?page=${curPage}`)
+        //         .then((res) => res.json())
+        //         .then((res) => {
+        //             setList((prev) => [...prev, ...res.content]);
+        //             setCurPage((prev) => prev + 1);
+        //         })
+        //         .finally(() => setFetching(false));
+        // }
         // eslint-disable-next-line
     }, [fetching]);
 
@@ -77,47 +84,45 @@ export default function Ads() {
 
     async function filterAds() {
         // setListAdd(list);
-        let url = 'http://localhost:8080/ads/all/';
-
-        if (filter.animal !== '') {
-            url += `a`;
-        }
-        if (filter.gender !== '') {
-            url += `g`;
-        }
-        if (filter.isLost !== '') {
-            url += `l`;
-        }
-        if (
-            filter.animal !== '' ||
-            filter.gender !== '' ||
-            filter.isLost !== ''
-        )
-            url += `?`;
-
-        if (filter.animal !== '') {
-            url += `animal=${filter.animal}`;
-        }
-        if (filter.gender !== '') {
-            if (filter.animal !== '') {
-                url += `&`;
-            }
-            url += `gender=${filter.gender}`;
-        }
-        if (filter.isLost !== '') {
-            if (filter.animal !== '' || filter.gender !== '') {
-                url += `&`;
-            }
-            url += `isLost=${filter.isLost}`;
-        }
-        console.log(url);
-        await fetch(url)
-            .then((res) => res.json())
-            .then((res) => {
-                setList(res.content);
-                setTotalCountFilter(totalCount);
-                setTotalCount(res.totalElements);
-            });
+        // let url = 'http://localhost:8080/ads/all/';
+        // if (filter.animal !== '') {
+        //     url += `a`;
+        // }
+        // if (filter.gender !== '') {
+        //     url += `g`;
+        // }
+        // if (filter.isLost !== '') {
+        //     url += `l`;
+        // }
+        // if (
+        //     filter.animal !== '' ||
+        //     filter.gender !== '' ||
+        //     filter.isLost !== ''
+        // )
+        //     url += `?`;
+        // if (filter.animal !== '') {
+        //     url += `animal=${filter.animal}`;
+        // }
+        // if (filter.gender !== '') {
+        //     if (filter.animal !== '') {
+        //         url += `&`;
+        //     }
+        //     url += `gender=${filter.gender}`;
+        // }
+        // if (filter.isLost !== '') {
+        //     if (filter.animal !== '' || filter.gender !== '') {
+        //         url += `&`;
+        //     }
+        //     url += `isLost=${filter.isLost}`;
+        // }
+        // console.log(url);
+        // await fetch(url)
+        //     .then((res) => res.json())
+        //     .then((res) => {
+        //         setList(res.content);
+        //         setTotalCountFilter(totalCount);
+        //         setTotalCount(res.totalElements);
+        //     });
     }
 
     function resetFilterAds() {
@@ -129,14 +134,14 @@ export default function Ads() {
             isLost: '',
         });
         setCurPage(0);
-        fetch(url + `?page=${curPage}`)
-            .then((res) => res.json())
-            .then((res) => {
-                setList(res.content);
-                //setListAdd(res.content)
-                setCurPage((prev) => prev + 1);
-                setTotalCount(res.totalElements);
-            });
+        // fetch(url + `?page=${curPage}`)
+        //     .then((res) => res.json())
+        //     .then((res) => {
+        //         setList(res.content);
+        //         //setListAdd(res.content)
+        //         setCurPage((prev) => prev + 1);
+        //         setTotalCount(res.totalElements);
+        //     });
         let inputs = document.querySelectorAll('input');
         inputs.forEach((el) => (el.checked = false));
     }
@@ -146,8 +151,6 @@ export default function Ads() {
     }
 
     function handleAdres(e) {
-        console.log(e.data.geo_lon);
-        console.log(e.data.geo_lat);
         setCenter([e.data.geo_lat, e.data.geo_lon]);
     }
 

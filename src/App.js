@@ -2,7 +2,7 @@ import './App.css';
 import Main from './components/pages/main/Main';
 import { Routes, Route } from 'react-router-dom';
 import AddForm from './components/pages/AddForm/AddForm';
-// import Layout from './components/Layout/Layout';
+import Layout from './components/Layout/Layout';
 import LostFirst from './components/Forms/LostFirst/LostFirst';
 import NewAdv from './components/Forms/NewAdv/NewAdv';
 import Lost from './components/pages/Lost/Lost';

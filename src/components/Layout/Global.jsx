@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import { GlobalContex } from './GlobalContex';
 
 export default function Global() {
-    const [isAuthorization, setIsAuthorization] = useState(false);
+    const [isAuthorization, setIsAuthorization] = useState(true);
     function handleAuthorization(bool) {
         setIsAuthorization(bool);
     }

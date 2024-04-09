@@ -26,23 +26,23 @@ export default function FoundFifth() {
         } else {
             console.log(formLost);
             add(formLost);
-            await sendData('http://localhost:8080/ads/new', formLost);
+            // await sendData('http://localhost:8080/ads/new', formLost);
             navigate('/ads');
         }
     }
 
-    async function sendData(url, data) {
-        const formData = new FormData();
+    // async function sendData(url, data) {
+    //     const formData = new FormData();
 
-        for (const name in data) {
-            formData.append(name, data[name]);
-        }
-        console.log(formData.get('img'));
-        await fetch(url, {
-            method: 'POST',
-            body: formData,
-        });
-    }
+    //     for (const name in data) {
+    //         formData.append(name, data[name]);
+    //     }
+    //     console.log(formData.get('img'));
+    //     await fetch(url, {
+    //         method: 'POST',
+    //         body: formData,
+    //     });
+    // }
 
     function change(event) {
         formUpdate({ ...formLost, [event.target.name]: event.target.value });

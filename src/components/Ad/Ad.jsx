@@ -1,32 +1,14 @@
 import styles from './Ad.module.scss';
-// import cat from '../../img/cat.svg';
+import cat from '../../img/cat.svg';
 import metka from '../../img/metka.svg';
-import { useEffect, useState } from 'react';
 
 export default function Ad({ advertisement }) {
-    const [img, setImg] = useState();
-    // let ImageUrlForBackground;
-
-    useEffect(() => {
-        fetchImage();
-    });
-
-    const fetchImage = async () => {
-        const res = await fetch(
-            'http://localhost:8080/ads/file?fileName=' + advertisement.filename
-        );
-        // ImageUrlForBackground = res;
-        const imageBlob = await res.blob();
-        const imageObjectURL = URL.createObjectURL(imageBlob);
-        setImg(imageObjectURL);
-    };
-
     return (
         <div className={styles.ad}>
             <div className={styles.photo}>
                 <img
                     className={styles.frontImg}
-                    src={img}
+                    src={cat}
                     alt='cat'
                     height={140}
                     width={140}
