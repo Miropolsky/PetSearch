@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/PetSearch/static/css/main.05286519.css",
+    "main.js": "/PetSearch/static/js/main.75f7387a.js",
+    "static/js/787.8954c662.chunk.js": "/PetSearch/static/js/787.8954c662.chunk.js",
+    "static/media/cat.svg": "/PetSearch/static/media/cat.cfc2693f184834d7491546f4e9b653a6.svg",
+    "static/media/about.png": "/PetSearch/static/media/about.7ab7d83070bbea8a066e.png",
+    "static/media/kotik.jpg": "/PetSearch/static/media/kotik.cd0bd2e609d0dffe911c.jpg",
+    "static/media/profile.png": "/PetSearch/static/media/profile.557587208eb9e232f2ca.png",
+    "static/media/pawBlack.svg": "/PetSearch/static/media/pawBlack.94ff7099787696f36868e095f91cfd8e.svg",
+    "static/media/metka.svg": "/PetSearch/static/media/metka.50042be5a6b2e30fe0991bae4f841840.svg",
+    "index.html": "/PetSearch/index.html",
+    "static/media/menu.svg": "/PetSearch/static/media/menu.dd8451a0b30facbeff6f98c7c51ac3ae.svg",
+    "static/media/arrow.svg": "/PetSearch/static/media/arrow.c1031f1a345fc8e13a4b253424a098a6.svg",
+    "main.05286519.css.map": "/PetSearch/static/css/main.05286519.css.map",
+    "main.75f7387a.js.map": "/PetSearch/static/js/main.75f7387a.js.map",
+    "787.8954c662.chunk.js.map": "/PetSearch/static/js/787.8954c662.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.05286519.css",
+    "static/js/main.75f7387a.js"
+  ]
+}
